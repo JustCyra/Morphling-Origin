@@ -1,0 +1,38 @@
+{
+    "name": "Fire Morphling §cI",
+    "description": "Made sentient from water alone but corrupted by The Nether, given shape to improve themselves and find a new purpose in life.",
+    "icon": {
+        "item": "minecraft:pink_dye"
+    },
+    "impact": 3,
+    "order": 4,
+    "upgrades": [
+		{
+			"condition": "cyra:morphling/progress/4_fire",
+			"origin": "cyra:morphling/4_fire"
+		}
+    ],
+    "powers": [
+        "cyra:morphling/3_fire/blazed_waterborn",
+        "cyra:morphling/3_fire/experience",
+        "cyra:morphling/extinguish",
+        "cyra:morphling/amphibious",
+        "origins:like_water",
+        "cyra:morphling/3_fire/blaze_launcher",
+		"cyra:morphling/3_fire/cold_intolarant",
+
+        "cyra:morphling/3_fire/locked/fire_burnout",
+        
+        "cyra:morphling/3_fire/evolve",
+        "cyra:morphling/3_fire/water_vulnerability",
+		"origins:damage_from_snowballs",
+		"origins:damage_from_potions",
+        "cyra:morphling/3_fire/sounds",
+        "cyra:morphling/3_fire/model_color",
+        "cyra:morphling/3_fire/visuals"
+    ],
+
+	"author": "Cyra",
+	"discord": "Cyra#9571",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

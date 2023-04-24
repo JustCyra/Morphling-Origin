@@ -1,0 +1,123 @@
+{
+    "type": "origins:multiple",
+    "name": "Waterborn",
+    "description": "Creatures from the sea aren't know for their toughness except a select few, but they are great at being mobile.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": {
+                "text": "Form Stats:",
+                "extra": [
+                    {
+                        "text": "",
+                        "color": "green",
+                        "extra": [
+                            "\n+50% Water Swim Speed",
+                            "\n+100% Water Visibility",
+                            "\n+15% Movement Velocity",
+                            "\n-30% Model Size"
+                        ]
+                    },
+                    {
+                        "text": "",
+                        "color": "red",
+                        "extra": [
+                            "\n-8 Max Health",
+                            "\n+200% Fire Damage Taken"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": {
+                "text": "Upgrades on ",
+                "extra": [
+                    {
+                        "text": "[",
+                        "color": "gray",
+                        "extra": [
+                            {
+                                "text": "Morphling II",
+                                "color": "aqua"
+                            },
+                            {
+                                "text": "]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "attributes": {
+        "type": "origins:attribute",
+        "update_health": true,
+        "modifiers": [
+            {
+                "attribute": "additionalentityattributes:water_speed",
+                "operation": "multiply_base",
+                "value": 0.5
+            },
+            {
+                "attribute": "additionalentityattributes:water_visibility",
+                "operation": "multiply_base",
+                "value": 1
+            },
+            {
+                "attribute": "minecraft:generic.max_health",
+                "operation": "addition",
+                "value": -8
+            }
+        ]
+    },
+    "mobile": {
+        "type": "origins:modify_velocity",
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ],
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": 0.15
+        }
+    },
+    "size": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "function cyra:morphling/size/forms/small"
+            }
+        },
+        "entity_action_removed": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:origin",
+                "origin": "cyra:morphling/2_water",
+                "layer": "origins:origin",
+                "inverted": true
+            },
+            "if_action": {
+                "type": "origins:execute_command",
+                "command": "function cyra:morphling/size/restore_to_default"
+            }
+        }
+    },
+    "fire_damage": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": 2
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "name": "One with Water",
+    "description": "You are able to walk on water provided you are not crouching.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": {
+                "text": "Changes on ",
+                "extra": [
+                    {
+                        "text": "[",
+                        "color": "gray",
+                        "extra": [
+                            {
+                                "text": "Morphling III",
+                                "color": "red"
+                            },
+                            {
+                                "text": "]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    
+    "type": "origins:walk_on_fluid",
+    "fluid": "minecraft:water",
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:fluid_height",
+                "fluid": "minecraft:water",
+                "comparison": "<=",
+                "compare_to": 0.4
+            },
+            {
+                "type": "origins:sneaking",
+                "inverted": true
+            }
+        ]
+    }
+}

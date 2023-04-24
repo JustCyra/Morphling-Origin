@@ -1,0 +1,40 @@
+{
+    "name": "Fire Burnout",
+    "description": "Your inner fire combined with other sources of fire removes any Hunger or Poison effects currently on you!",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": {
+                "text": "When taking Fire Damage:",
+                "extra": [
+                    {
+                        "text": "\nRemove Hunger and Poison Status Effects",
+                        "color": "green"
+                    }
+                ]
+            }
+        }
+    ],
+
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:fire"
+    },
+    "bientity_action": {
+        "type": "origins:target_action",
+        "action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:clear_effect",
+                    "effect": "minecraft:hunger"
+                },
+                {
+                    "type": "origins:clear_effect",
+                    "effect": "minecraft:poison"
+                }
+            ]
+        }
+    }
+}

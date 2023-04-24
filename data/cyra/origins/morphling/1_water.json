@@ -1,0 +1,34 @@
+{
+    "name": "Aqua Morphling §bI",
+    "description": "Made sentient from water alone, given shape to improve themselves and find a new purpose in life.",
+    "icon": {
+        "item": "minecraft:light_blue_dye"
+    },
+    "impact": 2,
+    "order": 4,
+    "upgrades": [
+		{
+			"condition": "cyra:morphling/progress/2_water",
+			"origin": "cyra:morphling/2_water"
+		}
+    ],
+    "powers": [
+        "cyra:morphling/1_water/waterborn",
+        "cyra:morphling/1_water/experience",
+        "cyra:morphling/extinguish",
+        "cyra:morphling/amphibious",
+        "origins:like_water",
+        "cyra:morphling/1_water/water_walk",
+        
+        "cyra:morphling/1_water/locked/throw_self",
+
+        "cyra:morphling/1_water/evolve",
+        "cyra:morphling/1_water/sounds",
+        "cyra:morphling/1_water/visuals",
+        "cyra:morphling/1_water/block_interactions"
+    ],
+
+	"author": "Cyra",
+	"discord": "Cyra#9571",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

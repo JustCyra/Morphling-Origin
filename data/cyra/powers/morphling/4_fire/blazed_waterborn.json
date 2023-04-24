@@ -1,0 +1,143 @@
+{
+    "type": "origins:multiple",
+    "name": "Blazed Waterborn",
+    "description": "The Nether corrupted you. You are better at dealing with fire, but not perfect. However water is now a new problem for you...",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": {
+                "text": "Form Stats:",
+                "extra": [
+                    {
+                        "text": "",
+                        "color": "green",
+                        "extra": [
+                            "\n+50% Water Swim Speed",
+                            "\n+50% Water Visibility",
+                            "\n+50% Lava Swim Speed",
+                            "\n+10% Movement Velocity",
+                            "\n-80% Fire Damage Taken",
+                            "\n-30% Model Size",
+                            "\n+2 Armor"
+                        ]
+                    },
+                    {
+                        "text": "",
+                        "color": "red",
+                        "extra": [
+                            "\n-6 Max Health"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": {
+                "text": "Changes on ",
+                "extra": [
+                    {
+                        "text": "[",
+                        "color": "gray",
+                        "extra": [
+                            {
+                                "text": "Morphling V",
+                                "color": "dark_purple"
+                            },
+                            {
+                                "text": "]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "attributes": {
+        "type": "origins:attribute",
+        "update_health": true,
+        "modifiers": [
+            {
+                "attribute": "additionalentityattributes:water_speed",
+                "operation": "multiply_base",
+                "value": 0.5
+            },
+            {
+                "attribute": "additionalentityattributes:water_visibility",
+                "operation": "multiply_base",
+                "value": 0.5
+            },
+            {
+                "attribute": "minecraft:generic.armor",
+                "operation": "addition",
+                "value": 2
+            },
+            {
+                "attribute": "minecraft:generic.max_health",
+                "operation": "addition",
+                "value": -6
+            }
+        ]
+    },
+    "mobile": {
+        "type": "origins:modify_velocity",
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ],
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": 0.1
+        }
+    },
+    "size": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "function cyra:morphling/size/forms/small"
+            }
+        },
+        "entity_action_removed": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:origin",
+                "origin": "cyra:morphling/5_end",
+                "layer": "origins:origin",
+                "inverted": true
+            },
+            "if_action": {
+                "type": "origins:execute_command",
+                "command": "function cyra:morphling/size/restore_to_default"
+            }
+        }
+    },
+    "fire_damage": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": -0.8
+        }
+    },
+    "lava_speed": {
+        "type": "origins:modify_attribute",
+        "attribute": "additionalentityattributes:lava_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.5
+        }
+    },
+    "lava_vision": {
+        "type": "origins:lava_vision",
+        "s": 0.0,
+        "v": 30.0
+    }
+}

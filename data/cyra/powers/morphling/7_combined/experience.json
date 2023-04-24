@@ -1,0 +1,10 @@
+{
+    "name": "Desire to Learn",
+    "description": "By nature, you wish to evolve and so you gain 40% more experience as a result.",
+
+    "type": "origins:modify_xp_gain",
+    "modifier": {
+        "operation": "multiply_base_multiplicative",
+        "value": 0.40
+    }
+}

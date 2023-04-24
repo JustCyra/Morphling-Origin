@@ -1,0 +1,119 @@
+{
+	"replace": false,
+	"origins": [
+		{
+			"condition": {
+				"type": "origins:advancement",
+				"advancement": "cyra:morphling/progress/2_water",
+				"inverted": true
+			},
+			"origins": [
+				"cyra:morphling/1_water"
+			]
+		},
+		{
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/2_water"
+					},
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/3_fire",
+						"inverted": true
+					}
+				]
+			},
+			"origins": [
+				"cyra:morphling/2_water"
+			]
+		},
+		{
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/3_fire"
+					},
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/4_fire",
+						"inverted": true
+					}
+				]
+			},
+			"origins": [
+				"cyra:morphling/3_fire"
+			]
+		},
+		{
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/4_fire"
+					},
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/5_end",
+						"inverted": true
+					}
+				]
+			},
+			"origins": [
+				"cyra:morphling/4_fire"
+			]
+		},
+		{
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/5_end"
+					},
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/6_end",
+						"inverted": true
+					}
+				]
+			},
+			"origins": [
+				"cyra:morphling/5_end"
+			]
+		},
+		{
+			"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/6_end"
+					},
+					{
+						"type": "origins:advancement",
+						"advancement": "cyra:morphling/progress/7_combined",
+						"inverted": true
+					}
+				]
+			},
+			"origins": [
+				"cyra:morphling/6_end"
+			]
+		},
+		{
+			"condition": {
+				"type": "origins:advancement",
+				"advancement": "cyra:morphling/progress/7_combined"
+			},
+			"origins": [
+				"cyra:morphling/7_combined/main"
+			]
+		}
+	]
+}

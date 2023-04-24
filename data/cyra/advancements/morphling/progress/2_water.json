@@ -1,0 +1,24 @@
+{
+    "display": {
+        "title": {
+            "text": "Enchanted Waterborn"
+        },
+        "description": {
+            "text": "Reach the second stage of Morphling by enchanting yourself"
+        },
+        "icon": {
+            "item": "minecraft:cyan_dye",
+            "nbt": "{Enchantments: [{}]}"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": false
+    },
+    "parent": "cyra:morphling/root",
+    "criteria": {
+        "2_water": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

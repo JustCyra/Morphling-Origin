@@ -1,0 +1,49 @@
+{
+    "type": "origins:multiple",
+    "name": "Amphibious",
+    "description": "You do not require to breathe anywhere!",
+    "natural_respiration": {
+        "type": "apugli:modify_enchantment_level",
+        "enchantment": "minecraft:respiration",
+        "modifier": {
+            "operation": "set_total",
+            "value": 3
+        }
+    },
+    "regain_air": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "condition": {
+            "type": "origins:air",
+            "comparison": "<",
+            "compare_to": 300
+        },
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:air",
+                        "comparison": "<",
+                        "compare_to": 280
+                    },
+                    "action": {
+                        "type": "origins:gain_air",
+                        "value": 20
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:air",
+                        "comparison": "<=",
+                        "compare_to": 290
+                    },
+                    "action": {
+                        "type": "origins:gain_air",
+                        "value": 10
+                    }
+                }
+            ]
+        }
+    }
+}

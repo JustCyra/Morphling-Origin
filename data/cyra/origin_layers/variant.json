@@ -1,0 +1,23 @@
+{
+    "name": "Origin Variant",
+    "missing_name": "No Origin Variant",
+    "missing_description": "You can select one by clicking \"Choose\"",
+    "enabled": true,
+    "hidden": false,
+    "order": 2,
+    "auto_choose": false,
+    "allow_random": false,
+    "origins": [
+        {
+            "condition": {
+                "type": "origins:origin",
+                "origin": "cyra:morphling/7_combined/main",
+                "layer": "origins:origin"
+            },
+            "origins": [
+                "cyra:morphling/7_combined/variant/fire",
+                "cyra:morphling/7_combined/variant/end"
+            ]
+        }
+    ]
+}

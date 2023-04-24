@@ -1,0 +1,154 @@
+{
+    "type": "origins:multiple",
+    "hidden": true,
+    "mute_hurt": {
+        "type": "apugli:custom_hurt_sound",
+        "muted": true
+    },
+    "play_hurt_normal": {
+        "type": "origins:action_when_damage_taken",
+        "cooldown": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "damage_condition": {
+            "type": "origins:fire",
+            "inverted": true
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.player.hurt_drown",
+                    "volume": 1.0,
+                    "pitch": 1.0
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.enderman.hurt",
+                    "volume": 0.4,
+                    "pitch": 1.25
+                }
+            ]
+        }
+    },
+    "play_hurt_fire": {
+        "type": "origins:action_when_damage_taken",
+        "cooldown": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "damage_condition": {
+            "type": "origins:fire"
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.generic.extinguish_fire",
+                    "volume": 1.0,
+                    "pitch": 1.5
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.enderman.hurt",
+                    "volume": 0.4,
+                    "pitch": 1.25
+                }
+            ]
+        }
+    },
+    "death": {
+        "type": "apugli:custom_death_sound",
+        "muted": false,
+        "sound": "minecraft:entity.dolphin.splash",
+        "volume": 1.0,
+        "pitch": 1.0
+    },
+    "death_enderman": {
+        "type": "apugli:custom_death_sound",
+        "muted": false,
+        "sound": "minecraft:entity.enderman.death",
+        "volume": 0.4,
+        "pitch": 1.25
+    },
+    "spawn": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:delay",
+            "ticks": 5,
+            "action": {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:predicate",
+                    "predicate": "cyra:entity/sounds/can_play/ambient"
+                },
+                "if_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:ambient.underwater.exit",
+                            "volume": 0.75,
+                            "pitch": 1
+                        },
+                        {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:entity.enderman.ambient",
+                            "volume": 0.4,
+                            "pitch": 1.25
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "ambient": {
+        "type": "origins:action_over_time",
+        "interval": 120,
+        "condition": {
+            "type": "origins:predicate",
+            "predicate": "cyra:entity/sounds/can_play/ambient"
+        },
+        "entity_action": {
+            "type": "origins:chance",
+            "chance": 0.1,
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:choice",
+                        "actions": [
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:play_sound",
+                                    "sound": "minecraft:ambient.underwater.enter",
+                                    "volume": 1.0,
+                                    "pitch": 0.75
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:play_sound",
+                                    "sound": "minecraft:ambient.underwater.exit",
+                                    "volume": 1.0,
+                                    "pitch": 0.75
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:entity.enderman.ambient",
+                        "volume": 0.4,
+                        "pitch": 1.25 
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+{
+    "type": "origins:multiple",
+    "name": "Blazed Body",
+    "description": "The Nether is within you, granting speed and toughness.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": {
+                "text": "Form Stats:",
+                "extra": [
+                    {
+                        "text": "",
+                        "color": "green",
+                        "extra": [
+                            "\n+50% Lava Swim Speed",
+                            "\n+10% Movement Velocity",
+                            "\n-80% Fire Damage Taken",
+                            "\n-30% Model Size",
+                            "\n+2 Armor"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "attributes": {
+        "type": "origins:attribute",
+        "update_health": true,
+        "modifiers": [
+            {
+                "attribute": "minecraft:generic.armor",
+                "operation": "addition",
+                "value": 2
+            }
+        ]
+    },
+    "mobile": {
+        "type": "origins:modify_velocity",
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ],
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": 0.1
+        }
+    },
+    "size": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "function cyra:morphling/size/forms/small"
+            }
+        },
+        "entity_action_removed": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:origin",
+                "origin": "cyra:morphling/7_combined/variant/end",
+                "layer": "cyra:variant",
+                "inverted": true
+            },
+            "if_action": {
+                "type": "origins:execute_command",
+                "command": "function cyra:morphling/size/restore_to_default"
+            }
+        }
+    },
+    "fire_damage": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": -0.6
+        }
+    },
+    "lava_speed": {
+        "type": "origins:modify_attribute",
+        "attribute": "additionalentityattributes:lava_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.5
+        }
+    },
+    "lava_vision": {
+        "type": "origins:lava_vision",
+        "s": 0.0,
+        "v": 30.0
+    },
+    "extra_particles": {
+        "type": "origins:particle",
+        "particle": "minecraft:crimson_spore",
+        "frequency": 8
+    }
+}

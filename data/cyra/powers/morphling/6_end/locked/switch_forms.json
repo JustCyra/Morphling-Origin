@@ -1,0 +1,64 @@
+{
+    "name": "§kMorph Body",
+    "description": "§kHarnessing your new found control you can toggle between End and Fire Forms.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/toggle.png",
+            "text": [
+                "Toggle ability. Use with [",
+                {
+                    "keybind": "key.origins.secondary_active"
+                },
+                "]"
+            ]
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": [
+                {
+                    "text": "Charges: ",
+                    "extra": [
+                        {
+                            "text": "2",
+                            "obfuscated": true
+                        }
+                    ]
+                },
+                {
+                    "text": "\nCharge cooldown: ",
+                    "extra": [
+                        {
+                            "text": "10 seconds",
+                            "obfuscated": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": {
+                "text": "Unlocks on ",
+                "extra": [
+                    {
+                        "text": "[",
+                        "color": "gray",
+                        "extra": [
+                            {
+                                "text": "Morphling VII",
+                                "color": "blue"
+                            },
+                            {
+                                "text": "]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "type": "origins:simple"
+}

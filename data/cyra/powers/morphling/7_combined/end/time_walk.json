@@ -1,0 +1,474 @@
+{
+    "type": "origins:multiple",
+    "name": "Time Walk",
+    "description": "Exposure to pure The End's influence gave you an ability to move freely though space and time, from others perspective, moving much faster throught the air then normal.\nThis is extremely tasking on the body so using it too much is not advised.",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "Active ability, use with %s"
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": [
+                "Dashes you forward on use at a cost of hunger",
+                "\nThe lighter your armor, the more it can be used",
+                "\nExcessive use will start damaging the user",
+                "\nDash Strenght: 2.00"
+            ]
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Dashes uses no hunger if you are the Explorer Class"
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": {
+                "text": "Dashing Bar Restoration:",
+                "extra": [
+                    {
+                        "text": "\nRestores 6% every second",
+                        "extra": [
+                            {
+                                "text": "\n  Cannot restore if Elytra Flying",
+                                "color": "gray"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": {
+                "text": "Unstable Bar Restoration:",
+                "extra": [
+                    {
+                        "text": "\nRestores ~1.71% every second",
+                        "extra": [
+                            {
+                                "text": "\n  Cannot restore below 4/7 Bars if Elytra Flying",
+                                "color": "gray"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "damage_unstable": {
+        "type": "origins:action_over_time",
+        "interval": 40,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                        "comparison": ">",
+                        "compare_to": 2000
+                    },
+                    "action": {
+                        "type": "origins:damage",
+                        "amount": 1.0,
+                        "source": {
+                            "name": "unstableTime",
+                            "bypasses_armor": true,
+                            "unblockable": true
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                        "comparison": ">",
+                        "compare_to": 2500
+                    },
+                    "action": {
+                        "type": "origins:damage",
+                        "amount": 2.0,
+                        "source": {
+                            "name": "unstableTime",
+                            "bypasses_armor": true,
+                            "unblockable": true
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                        "comparison": ">",
+                        "compare_to": 3000
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:damage",
+                                "amount": 4.0,
+                                "source": {
+                                    "name": "unstableTime",
+                                    "bypasses_armor": true,
+                                    "unblockable": true
+                                }
+                            },
+                            {
+                                "type": "origins:apply_effect",
+                                "effects": [
+                                    {
+                                        "effect": "minecraft:nausea",
+                                        "duration": 100,
+                                        "amplifier": 1,
+                                        "is_ambient": false,
+                                        "show_particles": false,
+                                        "show_icon": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "shake_when_unstable": {
+        "type": "origins:shaking",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morphling/7_combined/form_resources_unstable",
+            "comparison": ">",
+            "compare_to": 2000
+        }
+    },
+    "teleport": {
+        "type": "origins:active_self",
+        "cooldown": 5,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:and",
+                    "inverted": true,
+                    "conditions": [
+                        {
+                            "type": "origins:food_level",
+                            "comparison": "<=",
+                            "compare_to": 6.0
+                        },
+                        {
+                            "type": "origins:origin",
+                            "origin": "origins-classes:explorer",
+                            "layer": "origins-classes:class",
+                            "inverted": true
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:fall_flying"
+                                },
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                    "comparison": ">=",
+                                    "compare_to": 750
+                                }
+                            ]
+                        },
+                        {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:fall_flying",
+                                    "inverted": true
+                                },
+                                {
+                                    "type": "origins:or",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:attribute",
+                                                    "attribute": "minecraft:generic.armor",
+                                                    "comparison": "<=",
+                                                    "compare_to": 7
+                                                },
+                                                {
+                                                    "type": "origins:resource",
+                                                    "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                                    "comparison": ">=",
+                                                    "compare_to": 250
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:attribute",
+                                                    "attribute": "minecraft:generic.armor",
+                                                    "comparison": "<=",
+                                                    "compare_to": 15
+                                                },
+                                                {
+                                                    "type": "origins:resource",
+                                                    "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                                    "comparison": ">=",
+                                                    "compare_to": 333
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:attribute",
+                                                    "attribute": "minecraft:generic.armor",
+                                                    "comparison": "<=",
+                                                    "compare_to": 20
+                                                },
+                                                {
+                                                    "type": "origins:resource",
+                                                    "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                                    "comparison": ">=",
+                                                    "compare_to": 500
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:attribute",
+                                                    "attribute": "minecraft:generic.armor",
+                                                    "comparison": ">",
+                                                    "compare_to": 20
+                                                },
+                                                {
+                                                    "type": "origins:resource",
+                                                    "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                                    "comparison": ">=",
+                                                    "compare_to": 700
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "x": 0.00,
+                    "y": 0.15,
+                    "z": 2.00,
+                    "space": "local",
+                    "set": true
+                },
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "minecraft:slowness",
+                        "duration": 1,
+                        "amplifier": 4,
+                        "is_ambient": false,
+                        "show_particles": false,
+                        "show_icon": false
+                    }
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.enderman.teleport"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:reverse_portal ~ ~1 ~ 0 0.5 0 1 100 force"
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:fall_flying"
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                        "operation": "add",
+                                        "change": -750
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                                        "operation": "add",
+                                        "change": 1250
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 7
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                        "operation": "add",
+                                        "change": -250
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                                        "operation": "add",
+                                        "change": 416
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 15
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                        "operation": "add",
+                                        "change": -333
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                                        "operation": "add",
+                                        "change": 555
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 20
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                        "operation": "add",
+                                        "change": -500
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                                        "operation": "add",
+                                        "change": 833
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": ">",
+                                "compare_to": 20
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_stamina",
+                                        "operation": "add",
+                                        "change": -750
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                                        "operation": "add",
+                                        "change": 1250
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morphling/7_combined/form_resources_unstable",
+                        "comparison": ">",
+                        "compare_to": 2000
+                    },
+                    "if_action": {
+                        "type": "origins:damage",
+                        "amount": 2,
+                        "source": {
+                            "name": "unstableTime",
+                            "unblockable": true,
+                            "bypasses_armor": true
+                        }
+                    }
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "origins-classes:explorer",
+                        "layer": "origins-classes:class",
+                        "inverted": true
+                    },
+                    "if_action": {
+                        "type": "origins:exhaust",
+                        "amount": 2
+                    }
+                }
+            ]
+        }
+    }
+}
