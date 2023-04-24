@@ -1,0 +1,1 @@
+resource change @s cyra:morph/stage_6/upgrade_bar 1

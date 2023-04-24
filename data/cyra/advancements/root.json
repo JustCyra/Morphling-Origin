@@ -9,17 +9,32 @@
             "color": "#7700f7"
         },
         "description": {
-            "text": "List of Origins created by Cyra#9571\nHave Fun!"
+            "text": "Thank you for playing one of my origins!\n\nHave fun!"
         },
         "background": "minecraft:textures/block/grass_block_top.png",
         "frame": "task",
-        "show_toast": false,
+        "show_toast": true,
         "announce_to_chat": false,
         "hidden": true
     },
     "criteria": {
-        "root": {
-            "trigger": "minecraft:tick"
+        "morph": {
+            "trigger": "origins:chose_origin",
+            "conditions": {
+                "origin": "cyra:morph_1"
+            }
+        },
+        "morphling": {
+            "trigger": "origins:chose_origin",
+            "conditions": {
+                "origin": "cyra:morphling"
+            }
         }
-    }
+    },
+    "requirements": [
+        [
+            "morph",
+            "morphling"
+        ]
+    ]
 }

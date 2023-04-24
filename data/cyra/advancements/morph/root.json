@@ -1,0 +1,22 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:gray_dye"
+        },
+        "title": "Universal Evolution",
+        "description": {
+            "text": "Where am I?\nThis place seems like the one I know...\nBut why does it feel different?",
+            "color": "#004A5C"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "cyra:root",
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

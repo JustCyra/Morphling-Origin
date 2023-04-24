@@ -1,0 +1,45 @@
+{
+    "type": "origins:fire_projectile",
+    "name": "Blaze Launcher",
+    "description": "Upon usage, you focus and fire 3 small fireball blasts, although the amount of focus required is too great to have perfect aim in the moment.",
+    "badges": [
+		{
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "Active ability, use with %s"
+		},
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Fires 3 small fireball with a delay of 0.2 seconds"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": "Cooldown: 6 seconds"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": "Upgrades on §l[Morphling IV]§r."
+        }
+    ],
+    "entity_type": "minecraft:small_fireball",
+    "cooldown": 120,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+        "bar_index": 7,
+        "condition": {
+            "type": "origins:gamemode",
+            "gamemode": "spectator",
+            "inverted": true
+        }
+    },
+    "key": {
+        "key": "key.origins.primary_active",
+        "continuous": false
+    },
+    "count": 3,
+    "start_delay": 0,
+    "interval": 4,
+    "speed": 0.25,
+    "divergence": 15,
+    "sound": "minecraft:entity.blaze.shoot"
+}

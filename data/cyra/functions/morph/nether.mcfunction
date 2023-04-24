@@ -1,0 +1,1 @@
+give @s red_dye{MorphedEssence: 1b, display:{Name:'[{"text":"The Nether essence","italic":false,"color":"red"}]',Lore:['[{"text":"You can feel it burning in your hands","italic":false}]','[{"text":"But yet there is no pain nor any physical damage","italic":false}]']},Enchantments:[{id:"vanishing_curse",lvl:1}]}

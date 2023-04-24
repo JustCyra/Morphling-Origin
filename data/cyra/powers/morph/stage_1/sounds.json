@@ -1,0 +1,132 @@
+{
+    "type": "origins:multiple",
+    "hidden": true,
+    "hurt": {
+        "type": "apugli:custom_hurt_sound",
+        "muted": false,
+        "sound": "minecraft:entity.player.hurt_drown",
+        "volume": 1,
+        "pitch": 1,
+        "condition": {
+            "type": "origins:relative_health",
+            "comparison": ">",
+            "compare_to": 0.5
+        }
+    },
+    "hurt_low": {
+        "type": "apugli:custom_hurt_sound",
+        "muted": false,
+        "sound": "minecraft:entity.player.hurt_drown",
+        "volume": 0.9,
+        "pitch": 0.7,
+        "condition": {
+            "type": "origins:relative_health",
+            "comparison": "<=",
+            "compare_to": 0.5
+        }
+    },
+    "death": {
+        "type": "apugli:custom_death_sound",
+        "muted": false,
+        "sound": "minecraft:entity.dolphin.splash",
+        "volume": 1,
+        "pitch": 1
+    },
+    "spawn": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:delay",
+            "ticks": 5,
+            "action": {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:sneaking",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "spectator",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:status_effect",
+                            "effect": "minecraft:invisibility",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:origin",
+                            "origin": "origins-classes:rogue",
+                            "layer": "origins-classes:class",
+                            "inverted": true
+                        }
+                    ]
+                },
+                "if_action": {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:ambient.underwater.exit",
+                    "volume": 1,
+                    "pitch": 1
+                }
+            }
+        }
+    },
+    "ambient": {
+        "type": "origins:action_over_time",
+        "interval": 200,
+        "entity_action": {
+            "type": "origins:chance",
+            "action": {
+                "type": "origins:choice",
+                "actions": [
+                    {
+                        "element": {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:ambient.underwater.enter",
+                            "volume": 1,
+                            "pitch": 0.75
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:ambient.underwater.exit",
+                            "volume": 1,
+                            "pitch": 0.75
+                        },
+                        "weight": 1
+                    }
+                ]
+            },
+            "chance": 0.1
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:gamemode",
+                    "gamemode": "spectator",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:status_effect",
+                    "effect": "minecraft:invisibility",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:origin",
+                    "origin": "origins-classes:rogue",
+                    "layer": "origins-classes:class",
+                    "inverted": true
+                }
+            ]
+        }
+    }
+}

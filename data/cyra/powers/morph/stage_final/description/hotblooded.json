@@ -1,0 +1,11 @@
+{
+    "type": "origins:simple",
+    "name": "Hotblooded",
+    "description": "Poison and hunger effects burn away after a few seconds from you.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Active in Nether Form."
+        }
+    ]
+}

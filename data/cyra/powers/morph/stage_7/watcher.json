@@ -1,0 +1,505 @@
+{
+    "type": "origins:multiple",
+    "hidden": true,
+    "watched": {
+        "type": "origins:resource",
+        "name": "Watched",
+        "min": 0,
+        "max": 10,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "shake": {
+        "type": "origins:shaking",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/watcher_watched",
+            "comparison": ">=",
+            "compare_to": 2
+        }
+    },
+    "main": {
+        "type": "origins:action_over_time",
+        "interval": 200,
+        "hidden": true,
+        "entity_action": {
+            "type": "origins:chance",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:or",
+                            "conditions": [
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                    "comparison": "==",
+                                    "compare_to": 1,
+                                    "inverted": true
+                                },
+                                {
+                                    "type": "origins:on_block",
+                                    "inverted": true
+                                }
+                            ]
+                        },
+                        "if_action": {
+                            "type": "origins:choice",
+                            "actions": [
+                                {
+                                    "element": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:execute_command",
+                                                "command": "function cyra:morph/watcher_1"
+                                            },
+                                            {
+                                                "type": "origins:if_else",
+                                                "condition": {
+                                                    "type": "origins:resource",
+                                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                                    "comparison": "==",
+                                                    "compare_to": 1,
+                                                    "inverted": true
+                                                },
+                                                "if_action": {
+                                                    "type": "origins:change_resource",
+                                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                                    "change": 1
+                                                }
+                                            },
+                                            {
+                                                "type": "origins:play_sound",
+                                                "sound": "minecraft:ambient.cave",
+                                                "volume": 2,
+                                                "pitch": 1
+                                            },
+                                            {
+                                                "type": "origins:choice",
+                                                "actions": [
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~3 ~ ~-3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~-3 ~ ~3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~ ~ ~3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~3 ~ ~ 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~-0.25 ~6.5 ~0.75 0 0.75 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "weight": 4
+                                },
+                                {
+                                    "element": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:execute_command",
+                                                "command": "function cyra:morph/watcher_2"
+                                            },
+                                            {
+                                                "type": "origins:if_else",
+                                                "condition": {
+                                                    "type": "origins:resource",
+                                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                                    "comparison": "==",
+                                                    "compare_to": 1,
+                                                    "inverted": true
+                                                },
+                                                "if_action": {
+                                                    "type": "origins:change_resource",
+                                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                                    "change": 1
+                                                }
+                                            },
+                                            {
+                                                "type": "origins:play_sound",
+                                                "sound": "minecraft:ambient.cave",
+                                                "volume": 2,
+                                                "pitch": 1
+                                            },
+                                            {
+                                                "type": "origins:choice",
+                                                "actions": [
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~3 ~ ~-3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~-3 ~ ~3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~ ~ ~3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~3 ~ ~ 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~-0.25 ~6.5 ~0.75 0 0.75 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "weight": 5
+                                },
+                                {
+                                    "element": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:execute_command",
+                                                "command": "function cyra:morph/watcher_3"
+                                            },
+                                            {
+                                                "type": "origins:if_else",
+                                                "condition": {
+                                                    "type": "origins:resource",
+                                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                                    "comparison": "==",
+                                                    "compare_to": 1,
+                                                    "inverted": true
+                                                },
+                                                "if_action": {
+                                                    "type": "origins:change_resource",
+                                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                                    "change": 1
+                                                }
+                                            },
+                                            {
+                                                "type": "origins:play_sound",
+                                                "sound": "minecraft:ambient.cave",
+                                                "volume": 2,
+                                                "pitch": 1
+                                            },
+                                            {
+                                                "type": "origins:choice",
+                                                "actions": [
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~3 ~ ~-3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~-3 ~ ~3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~ ~ ~3 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~3 ~ ~ 0 1 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:execute_command",
+                                                            "command": "particle minecraft:reverse_portal ~-0.25 ~6.5 ~0.75 0 0.75 0.25 0.05 250 force"
+                                                        },
+                                                        "weight": 1
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "weight": 2
+                                }
+                            ]
+                        },
+                        "else_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\":\"There it is again...\",\"bold\":false,\"color\":\"white\"}"
+                                },
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                    "change": 1
+                                },
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:slowness",
+                                        "duration": 20,
+                                        "amplifier": 9
+                                    }
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:reverse_portal ^-0.35 ^0.5 ^-2 0 0.75 0.25 0.05 250 force"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:flame ^0.35 ^0.5 ^-2 0 0.75 0.25 0.01 250 force"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:composter ^ ^0.8 ^-2 0 0.75 0.25 0.01 250 force"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:totem_of_undying ^ ^0.8 ^-2 0 0.75 0.25 0.01 250 force"
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 10,
+                                    "action": {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:ambient.cave",
+                                        "volume": 3,
+                                        "pitch": 1
+                                    }
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 15,
+                                    "action": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:execute_command",
+                                                "command": "tp @s ^ ^ ^ ~-180 ~"
+                                            },
+                                            {
+                                                "type": "origins:execute_command",
+                                                "command": "title @s actionbar {\"text\":\"THERE!\",\"bold\":true,\"color\":\"red\"}"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 80,
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "title @s actionbar {\"text\":\"What the hell was that?\",\"bold\":false,\"color\":\"white\"}"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "origins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:slowness",
+                            "duration": 20,
+                            "amplifier": 2
+                        }
+                    },
+                    {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "cyra:morph/stage_7/watcher_watched",
+                                    "comparison": "==",
+                                    "compare_to": 10
+                                },
+                                {
+                                    "type": "origins:gamemode",
+                                    "gamemode": "creative",
+                                    "inverted": true
+                                },
+                                {
+                                    "type": "origins:gamemode",
+                                    "gamemode": "spectator",
+                                    "inverted": true
+                                }
+                            ]
+                        },
+                        "if_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "power grant @s cyra:morph/stage_7/temp/cutscene"
+                                },
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:slowness",
+                                        "duration": 3,
+                                        "amplifier": 127,
+                                        "is_ambient": true,
+                                        "show_particles": false,
+                                        "show_icon": false
+                                    }
+                                },
+                                {
+                                    "type": "origins:play_sound",
+                                    "sound": "minecraft:block.respawn_anchor.charge"
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 3,
+                                    "action": {
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:block.respawn_anchor.deplete"
+                                    }
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 4,
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "function cyra:morph/teleport_particles"
+                                    }
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 5,
+                                    "action": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:change_resource",
+                                                "resource": "cyra:morph/stage_7/fool_toggle",
+                                                "change": 1
+                                            },
+                                            {
+                                                "type": "origins:choice",
+                                                "actions": [
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:change_resource",
+                                                            "resource": "cyra:morph/stage_7/fool_item",
+                                                            "change": 0
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:change_resource",
+                                                            "resource": "cyra:morph/stage_7/fool_item",
+                                                            "change": 1
+                                                        },
+                                                        "weight": 1
+                                                    },
+                                                    {
+                                                        "element": {
+                                                            "type": "origins:change_resource",
+                                                            "resource": "cyra:morph/stage_7/fool_item",
+                                                            "change": 2
+                                                        },
+                                                        "weight": 1
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "chance": 0.04,
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "creative",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "spectator",
+                        "inverted": true
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_toggle",
+                    "comparison": "==",
+                    "compare_to": 1,
+                    "inverted": true
+                },
+                {
+                    "type": "origins:gamemode",
+                    "gamemode": "creative",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:gamemode",
+                    "gamemode": "spectator",
+                    "inverted": true
+                }
+            ]
+        }
+    }
+}

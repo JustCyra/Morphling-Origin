@@ -1,0 +1,38 @@
+{
+    "type": "origins:multiple",
+    "name": "Young Body",
+    "description": "Due to you only just starting to get a grip on your real potential, your body is much weaker and smaller.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "- You have 6 hearts\n- Are 1.4 Blocks tall\n- 10% more movement speed\n- 10% less hunger usage"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": "Upgrades on §l[Morphling II]§r."
+        }
+    ],
+    "fragile_speed": {
+        "type": "origins:attribute",
+        "modifiers": [
+            {
+                "attribute": "generic.max_health",
+                "value": -8,
+                "operation": "addition"
+            },
+            {
+                "attribute": "generic.movement_speed",
+                "value": 0.1,
+                "operation": "multiply_base"
+            }
+        ]
+    },
+    "less_hunger": {
+        "type": "origins:modify_exhaustion",
+        "modifier": {
+            "name": "Increased exhaustion",
+            "operation": "multiply_base",
+            "value": -0.1
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": "origins:multiple",
+    "hidden": true,
+    "main": {
+        "type": "origins:particle",
+        "particle": "minecraft:totem_of_undying",
+        "frequency": 14
+    },
+    "secondary": {
+        "type": "origins:particle",
+        "particle": "minecraft:flame",
+        "frequency": 6
+    },
+    "enchanted": {
+        "type": "origins:particle",
+        "particle": "minecraft:enchant",
+        "frequency": 4
+    }
+}

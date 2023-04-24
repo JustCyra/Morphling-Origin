@@ -1,0 +1,15 @@
+{
+    "type": "origins:simple",
+    "name": "Slender-like Blazed Body",
+    "description": "Going though that portal warped you in a way that you did not expect, granting you the powers of The End.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "While in End Form:\n- You have 7 hearts\n- Are 10% slimmer\n- 10% less hunger usage\n- Cannot use Elytras\n\nWhile in Nether Form:\n- You have 7 hearts\n- Are 1.5 Blocks tall\n- 10% more movement speed\n- 10% less hunger usage\n- Can use Elytras"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": "Upgrades on §l[Morphling VI]§r."
+        }
+    ]
+}

@@ -1,0 +1,137 @@
+{
+    "type": "origins:action_on_callback",
+    "name": "Forever §kCURSED§r",
+    "description": "THEY KNOW\nTHEY KNOW YOU §kTAMPERED§r WITH THEIR §kRULES§r\nYOU WENT TOO FAR\nYOU CANNOT ESCAPE THEIR §kPRESENCE!\n\nYOU DON'T KNOW WHAT THEY COULD DO",
+    "entity_action_added": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:delay",
+                "ticks": 6,
+                "action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morph/stage_7/switch_main",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_nether"
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_end"
+                    }
+                }
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 6,
+                "action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:sneaking",
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:gamemode",
+                                "gamemode": "spectator",
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:status_effect",
+                                "effect": "minecraft:invisibility",
+                                "inverted": true
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_7/switch_main",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        "if_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 1,
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "particle minecraft:flame ~ ~0.8 ~ 0.2 0.4 0.2 0 125"
+                                    }
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 10,
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "particle minecraft:flame ~ ~0.8 ~ 0.2 0.4 0.2 1 125"
+                                    }
+                                }
+                            ]
+                        },
+                        "else_action": {
+                            "type": "origins:delay",
+                            "ticks": 1,
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:reverse_portal ~ ~0.7 ~ 0 0 0 1 70"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "entity_action_respawned": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:delay",
+                "ticks": 6,
+                "action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morph/stage_7/switch_main",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_nether"
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_end"
+                    }
+                }
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "cyra:morph/stage_6/teleport_bar",
+                "change": 1000,
+                "operation": "set"
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "cyra:morph/stage_6/teleport_unstable",
+                "change": 0,
+                "operation": "set"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:execute_command",
+        "command": "scale reset @s"
+    }
+}

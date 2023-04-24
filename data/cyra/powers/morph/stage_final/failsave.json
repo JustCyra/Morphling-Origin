@@ -1,0 +1,16 @@
+{
+    "type": "origins:action_on_callback",
+    "hidden": true,
+    "entity_action_added": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:advancement",
+            "advancement": "cyra:morph/stages/final_goal_perfection",
+            "inverted": true
+        },
+        "if_action": {
+            "type": "origins:execute_command",
+            "command": "advancement grant @s only cyra:morph/stages/final_goal_perfection"
+        }
+    }
+}

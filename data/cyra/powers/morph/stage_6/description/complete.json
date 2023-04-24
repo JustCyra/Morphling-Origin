@@ -1,0 +1,15 @@
+{
+    "type": "origins:simple",
+    "name": "Complete Body",
+    "description": "Finally, a form you south out for so long, you are complete...",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "While in End Form:\n- You have 8 hearts\n- Are 10% slimmer\n- 15% less hunger usage\n\nWhile in Nether Form:\n- You have 8 hearts\n- Are 1.5 Blocks tall\n- 10% more movement speed\n- 10% less hunger usage"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": "Upgrades on §l[§kPerfect§r§l Morphling]§r."
+        }
+    ]
+}

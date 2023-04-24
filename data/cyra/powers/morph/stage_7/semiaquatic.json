@@ -1,0 +1,56 @@
+{
+	"name": "Water Elemental",
+	"description": "You can hold your breath longer then most origins and swim 15% faster but you need some kind of water protection to make this ability work.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "If you have any amount of Water Protection:\n- You can spend 4 more seconds under water\n- Swim speed 15% faster"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": "Upgrades on §l[§kPerfect§r§l Morphling]§r."
+        }
+    ],
+	"type": "origins:multiple",
+	"main": {
+		"type": "origins:stacking_status_effect",
+		"min_stacks": 0,
+		"max_stacks": 4,
+		"duration_per_stack": 20,
+		"effects": {
+			"effect": "minecraft:water_breathing",
+			"is_ambient": true,
+			"show_particles": false,
+			"show_icon": false
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:submerged_in",
+					"fluid": "minecraft:water",
+					"inverted": true
+				},
+				{
+					"type": "origins:resource",
+					"resource": "cyra:morph/stage_7/water_vulnerability_waterprot",
+					"comparison": ">",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"swim_speed": {
+		"type": "origins:modify_swim_speed",
+		"modifier": {
+			"operation": "multiply_base",
+			"value": 0.15
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "cyra:morph/stage_7/water_vulnerability_waterprot",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	}
+}

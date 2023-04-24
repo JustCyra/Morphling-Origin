@@ -1,0 +1,1 @@
+give @s magenta_dye{MorphedEssence: 1b, display:{Name:'[{"text":"The End essence","italic":false,"color":"light_purple"}]',Lore:['[{"text":"It emits an aura of the endermans home world","italic":false}]','[{"text":"Strangely reminds of an ","italic":false,"color":"light_purple"},{"text":"Old Civilization","obfuscated":true}]']},Enchantments:[{id:"vanishing_curse",lvl:1}]}

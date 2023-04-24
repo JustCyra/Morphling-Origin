@@ -1,0 +1,13 @@
+{
+    "type": "origins:modify_damage_taken",
+    "name": "Freeze Sensitive",
+    "description": "Inheriting The Nether made you take 5x more Freeze damage",
+    "damage_condition": {
+        "type": "origins:name",
+        "name": "freeze"
+    },
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 4
+    }
+}

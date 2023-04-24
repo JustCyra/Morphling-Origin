@@ -1,0 +1,36 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "bar": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "change": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "function cyra:morph/upgrade"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "origin set @s origins:origin cyra:morph_7"
+                }
+            ]
+        },
+        "interval": 5,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_6/upgrade_bar",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    }
+}

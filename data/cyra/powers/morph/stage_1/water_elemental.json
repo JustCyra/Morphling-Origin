@@ -1,0 +1,65 @@
+{
+    "type": "origins:multiple",
+    "name": "Water Elemental",
+    "description": "Your ability to hold your breath underwater is better than most other origins.\nYou also swim 40% faster and spawn in a Beach biome.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "- You can spend 5 more seconds under water\n- Swim speed 40% faster\n- Your natural spawn in a beach biome"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": "Upgrades on §l[Morphling II]§r."
+        }
+    ],
+    "beach": {
+        "type": "origins:modify_player_spawn",
+        "dimension": "minecraft:overworld",
+        "biome": "minecraft:beach",
+        "spawn_strategy": "default"
+    },
+    "randomize_spawn": {
+        "type": "origins:action_on_callback",
+        "entity_action_respawned": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:command",
+                    "command": "execute if data entity @s SpawnY",
+                    "comparison": "<=",
+                    "compare_to": 0
+                },
+                "if_action": {
+                    "type": "origins:execute_command",
+                    "command": "spreadplayers ~ ~ 5 50 under 319 false @s"
+                }
+            }
+        }
+    },
+    "normal_breathe": {
+        "type": "origins:stacking_status_effect",
+        "min_stacks": 0,
+        "max_stacks": 5,
+        "duration_per_stack": 20,
+        "effects": {
+            "effect": "minecraft:water_breathing",
+            "is_ambient": true,
+            "show_particles": false,
+            "show_icon": false
+        },
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water",
+            "inverted": true
+        }
+    },
+    "swim_speed": {
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.4
+        }
+    }
+}

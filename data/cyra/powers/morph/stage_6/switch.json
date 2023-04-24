@@ -1,0 +1,463 @@
+{
+    "type": "origins:multiple",
+    "name": "Morph",
+    "description": "Using your Secondary key, you can toggle between Enderman and Nether Forms.\nThe lower the armor, the more quickly you can switch.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/toggle.png",
+            "text": "Toggle ability, use with %s"
+        }
+    ],
+    "main": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "function cyra:morph/size_end"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s cyra:morph/stage_6/end_form cyra:morph/stage_6/switch"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power revoke @s cyra:morph/stage_6/nether_form cyra:morph/stage_6/switch"
+                }
+            ]
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "function cyra:morph/size_nether"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s cyra:morph/stage_6/nether_form cyra:morph/stage_6/switch"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power revoke @s cyra:morph/stage_6/end_form cyra:morph/stage_6/switch"
+                }
+            ]
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 20,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 17,
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "*:*_cooldown",
+                        "comparison": "<",
+                        "compare_to": 20
+                    },
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "spectator",
+                        "inverted": true
+                    }
+                ]
+            }
+        }
+    },
+    "tick": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_cooldown",
+            "change": 1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_cooldown",
+            "comparison": "<",
+            "compare_to": 20
+        }
+    },
+    "apply_remove_power": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:delay",
+            "ticks": 5,
+            "action": {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:power",
+                            "power": "cyra:morph/stage_6/nether_form",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:power",
+                            "power": "cyra:morph/stage_6/end_form",
+                            "inverted": true
+                        }
+                    ]
+                },
+                "if_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "*:*_main",
+                            "change": 1,
+                            "operation": "set"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power grant @s cyra:morph/stage_6/end_form cyra:morph/stage_6/switch"
+                        }
+                    ]
+                }
+            }
+        },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power revoke @s cyra:morph/stage_6/nether_form cyra:morph/stage_6/switch"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power revoke @s cyra:morph/stage_6/end_form cyra:morph/stage_6/switch"
+                }
+            ]
+        }
+    },
+    "toggle": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:attribute",
+                                        "attribute": "minecraft:generic.armor",
+                                        "comparison": "<=",
+                                        "compare_to": 20
+                                    },
+                                    {
+                                        "type": "origins:attribute",
+                                        "attribute": "minecraft:generic.armor",
+                                        "comparison": ">",
+                                        "compare_to": 15
+                                    }
+                                ]
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_cooldown",
+                                "change": -16
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:attribute",
+                                        "attribute": "minecraft:generic.armor",
+                                        "comparison": "<=",
+                                        "compare_to": 15
+                                    },
+                                    {
+                                        "type": "origins:attribute",
+                                        "attribute": "minecraft:generic.armor",
+                                        "comparison": ">",
+                                        "compare_to": 12
+                                    }
+                                ]
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_cooldown",
+                                "change": -14
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "==",
+                                "compare_to": 12
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_cooldown",
+                                "change": -10
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:attribute",
+                                        "attribute": "minecraft:generic.armor",
+                                        "comparison": "<=",
+                                        "compare_to": 11
+                                    },
+                                    {
+                                        "type": "origins:attribute",
+                                        "attribute": "minecraft:generic.armor",
+                                        "comparison": ">",
+                                        "compare_to": 7
+                                    }
+                                ]
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_cooldown",
+                                "change": -8
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 7
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_cooldown",
+                                "change": -5
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_main",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_main",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:if_else",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:sneaking",
+                                            "inverted": true
+                                        },
+                                        {
+                                            "type": "origins:gamemode",
+                                            "gamemode": "spectator",
+                                            "inverted": true
+                                        },
+                                        {
+                                            "type": "origins:status_effect",
+                                            "effect": "minecraft:invisibility",
+                                            "inverted": true
+                                        }
+                                    ]
+                                },
+                                "if_action": {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:reverse_portal ~ ~0.7 ~ 0 0 0 1 50"
+                                }
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_main",
+                                "change": -1
+                            },
+                            {
+                                "type": "origins:if_else",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:sneaking",
+                                            "inverted": true
+                                        },
+                                        {
+                                            "type": "origins:gamemode",
+                                            "gamemode": "spectator",
+                                            "inverted": true
+                                        },
+                                        {
+                                            "type": "origins:status_effect",
+                                            "effect": "minecraft:invisibility",
+                                            "inverted": true
+                                        }
+                                    ]
+                                },
+                                "if_action": {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:flame ~ ~0.8 ~ 0.2 0.4 0.2 0 100"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 16,
+            "condition": {
+                "type": "origins:gamemode",
+                "gamemode": "spectator",
+                "inverted": true
+            }
+        },
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_cooldown",
+                            "comparison": ">=",
+                            "compare_to": 16
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": "<=",
+                            "compare_to": 20
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": ">",
+                            "compare_to": 15
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_cooldown",
+                            "comparison": ">=",
+                            "compare_to": 14
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": "<=",
+                            "compare_to": 15
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": ">",
+                            "compare_to": 12
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_cooldown",
+                            "comparison": ">=",
+                            "compare_to": 10
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": "==",
+                            "compare_to": 12
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_cooldown",
+                            "comparison": ">=",
+                            "compare_to": 8
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": "<=",
+                            "compare_to": 11
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": ">",
+                            "compare_to": 7
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_cooldown",
+                            "comparison": ">=",
+                            "compare_to": 5
+                        },
+                        {
+                            "type": "origins:attribute",
+                            "attribute": "minecraft:generic.armor",
+                            "comparison": "<=",
+                            "compare_to": 7
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:splash_potion",
+            "nbt": "{CustomPotionColor: 14709273, IsExtendedByCleric: 1b, display: {Name: '[{\"text\":\"Morphed Potion\",\"italic\":false,\"color\":\"gold\"}]'}, Enchantments: [{id: \"channeling\", lvl: 1}], CustomPotionEffects: [{Id: 22, Duration: 100, Amplifier: 0}, {Id: 15, Duration: 5, Amplifier: 0, Ambient: 1, ShowParticles: 0, ShowIcon: 0}, {Id: 24, Duration: 40, Amplifier: 0, Ambient: 1, ShowParticles: 0, ShowIcon: 0}, {Id: 4, Duration: 30, Amplifier: 0, Ambient: 1, ShowParticles: 0, ShowIcon: 0}, {Id: 9, Duration: 30, Amplifier: 0, Ambient: 1, ShowParticles: 0, ShowIcon: 0}, {Id: 10, Duration: 30, Amplifier: 0, Ambient: 1, ShowParticles: 0, ShowIcon: 0}, {Id: 2, Duration: 30, Amplifier: 1, Ambient: 1, ShowParticles: 0, ShowIcon: 0}, {Id: 1, Duration: 9600, Amplifier: 0}, {Id: 5, Duration: 19200, Amplifier: 0}, {Id: 18, Duration: 40, Amplifier: 0, Ambient: 1, ShowParticles: 0, ShowIcon: 0}]}"
+        },
+        "title": "Mastered Powers",
+        "description": "Achieve Stage VI of Morphling",
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "cyra:morph/stages/fun_begins",
+    "criteria": {
+        "morphmastered": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "morphmastered"
+        ]
+    ],
+    "rewards": {
+        "experience": 100
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "type": "origins:multiple",
+    "name": "Temp: Cold Slowness Morphling",
+    "slowness": {
+        "type": "origins:attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_total",
+            "value": -0.3
+        }
+    },
+    "shake": {
+        "type": "origins:shaking"
+    }
+}

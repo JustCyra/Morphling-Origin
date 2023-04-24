@@ -1,0 +1,672 @@
+{
+    "type": "origins:multiple",
+    "name": "Time Walk",
+    "description": "Exposure to The End gave you an ability to move freely though space and time, from others perspective, moving much faster throught the air then normal.\nThis is extremely tasking on the body using it too much is not advised.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "Active ability, use with %s"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Dashes you forward on use\nThe lighter your armor, the more it can be used\nExcessive use will start damaging the user\nDash Strenght: 2.25\n\nCan only be used in End Form"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Dashes use no hunger if you are the Explorer Class"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": "Dashing Bar Restoration:\n- Restores 6% every second\n- Cannot restore if Elytra Flying!\n\nUnstable Bar Restoration:\n- Restores ~1.71% every second\n- Cannot restore below ~57.1% if Elytra Flying!"
+        }
+    ],
+    "bar": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1000,
+        "start_value": 1000,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 19,
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "cyra:morph/stage_6/switch_main",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "spectator",
+                        "inverted": true
+                    }
+                ]
+            }
+        }
+    },
+    "unstable": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3500,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 23,
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "*:*_unstable",
+                        "comparison": ">",
+                        "compare_to": 0
+                    },
+                    {
+                        "type": "origins:resource",
+                        "resource": "cyra:morph/stage_6/switch_main",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "spectator",
+                        "inverted": true
+                    }
+                ]
+            }
+        }
+    },
+    "decay_bars": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_bar",
+            "change": 60
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar",
+                    "comparison": "<",
+                    "compare_to": 1000
+                },
+                {
+                    "type": "origins:fall_flying",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "discharge_unstable": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_unstable",
+            "change": -60
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_unstable",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:fall_flying",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:resource",
+                            "resource": "*:*_unstable",
+                            "comparison": ">",
+                            "compare_to": 2000
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "damage_unstable_minor": {
+        "type": "origins:action_over_time",
+        "interval": 100,
+        "entity_action": {
+            "type": "origins:damage",
+            "amount": 2,
+            "source": {
+                "name": "outOfWorld",
+                "bypasses_armor": true
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_unstable",
+            "comparison": ">",
+            "compare_to": 2000
+        }
+    },
+    "damage_unstable_normal": {
+        "type": "origins:action_over_time",
+        "interval": 70,
+        "entity_action": {
+            "type": "origins:damage",
+            "amount": 2,
+            "source": {
+                "name": "outOfWorld",
+                "unblockable": true,
+                "bypasses_armor": true,
+                "out_of_world": true
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_unstable",
+            "comparison": ">",
+            "compare_to": 2500
+        }
+    },
+    "damage_unstable_major": {
+        "type": "origins:action_over_time",
+        "interval": 50,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:damage",
+                    "amount": 2,
+                    "source": {
+                        "name": "outOfWorld",
+                        "unblockable": true,
+                        "bypasses_armor": true,
+                        "out_of_world": true
+                    }
+                },
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "minecraft:nausea",
+                        "duration": 600,
+                        "amplifier": 4,
+                        "is_ambient": false,
+                        "show_particles": false,
+                        "show_icon": true
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_unstable",
+            "comparison": ">",
+            "compare_to": 3000
+        }
+    },
+    "shake": {
+        "type": "origins:shaking",
+        "condition": {
+            "type": "origins:status_effect",
+            "effect": "minecraft:nausea",
+            "min_amplifier": 4,
+            "max_amplifier": 4,
+            "min_duration": 0,
+            "max_duration": 600
+        }
+    },
+    "ability": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "x": 0.00,
+                    "y": 0.15,
+                    "z": 2.25,
+                    "space": "local",
+                    "set": true
+                },
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "minecraft:slowness",
+                        "duration": 1,
+                        "amplifier": 4,
+                        "is_ambient": false,
+                        "show_particles": false,
+                        "show_icon": false
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "cyra:morph/stage_6/unstable_state",
+                    "change": 1
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.enderman.teleport"
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": {
+                        "type": "minecraft:reverse_portal"
+                    },
+                    "count": 100,
+                    "speed": 1,
+                    "force": true,
+                    "spread": {
+                        "x": 0.0,
+                        "y": 0.7,
+                        "z": 0.0
+                    }
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:fall_flying"
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_bar",
+                                        "change": -750
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_unstable",
+                                        "change": 1250
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 7
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_bar",
+                                        "change": -250
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_unstable",
+                                        "change": 416
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 15
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_bar",
+                                        "change": -333
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_unstable",
+                                        "change": 555
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 20
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_bar",
+                                        "change": -500
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "*:*_unstable",
+                                        "change": 833
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_unstable",
+                        "comparison": ">",
+                        "compare_to": 2000
+                    },
+                    "if_action": {
+                        "type": "origins:damage",
+                        "amount": 2,
+                        "source": {
+                            "name": "outOfWorld",
+                            "unblockable": true,
+                            "bypasses_armor": true,
+                            "out_of_world": true
+                        }
+                    }
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "origins-classes:explorer",
+                        "layer": "origins-classes:class",
+                        "inverted": true
+                    },
+                    "if_action": {
+                        "type": "origins:exhaust",
+                        "amount": 2
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "cyra:morph/stage_6/unstable_state",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "cyra:morph/stage_6/unstable_state",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:change_resource",
+                                    "resource": "cyra:morph/stage_6/unstable_state",
+                                    "change": -1
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 5,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "cyra:morph/stage_6/unstable_state",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:change_resource",
+                                    "resource": "cyra:morph/stage_6/unstable_state",
+                                    "change": -1
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:delay",
+                        "ticks": 7,
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "cyra:morph/stage_6/unstable_state",
+                                    "change": 1
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 1,
+                                    "action": {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morph/stage_6/unstable_state",
+                                        "change": -1
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "chance": 0.90
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:delay",
+                        "ticks": 10,
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "cyra:morph/stage_6/unstable_state",
+                                    "change": 1
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 1,
+                                    "action": {
+                                        "type": "origins:change_resource",
+                                        "resource": "cyra:morph/stage_6/unstable_state",
+                                        "change": -1
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "chance": 0.80
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:delay",
+                                "ticks": 15,
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "cyra:morph/stage_6/unstable_state",
+                                            "change": 1
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 1,
+                                            "action": {
+                                                "type": "origins:change_resource",
+                                                "resource": "cyra:morph/stage_6/unstable_state",
+                                                "change": -1
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:chance",
+                                "action": {
+                                    "type": "origins:delay",
+                                    "ticks": 25,
+                                    "action": {
+                                        "type": "origins:and",
+                                        "actions": [
+                                            {
+                                                "type": "origins:change_resource",
+                                                "resource": "cyra:morph/stage_6/unstable_state",
+                                                "change": 1
+                                            },
+                                            {
+                                                "type": "origins:delay",
+                                                "ticks": 1,
+                                                "action": {
+                                                    "type": "origins:change_resource",
+                                                    "resource": "cyra:morph/stage_6/unstable_state",
+                                                    "change": -1
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "chance": 0.5
+                            }
+                        ]
+                    },
+                    "chance": 0.30
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:fall_flying"
+                                },
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "*:*_bar",
+                                    "comparison": ">=",
+                                    "compare_to": 750
+                                }
+                            ]
+                        },
+                        {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:fall_flying",
+                                    "inverted": true
+                                },
+                                {
+                                    "type": "origins:attribute",
+                                    "attribute": "minecraft:generic.armor",
+                                    "comparison": "<=",
+                                    "compare_to": 7
+                                },
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "*:*_bar",
+                                    "comparison": ">=",
+                                    "compare_to": 250
+                                }
+                            ]
+                        },
+                        {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:fall_flying",
+                                    "inverted": true
+                                },
+                                {
+                                    "type": "origins:attribute",
+                                    "attribute": "minecraft:generic.armor",
+                                    "comparison": "<=",
+                                    "compare_to": 15
+                                },
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "*:*_bar",
+                                    "comparison": ">=",
+                                    "compare_to": 333
+                                }
+                            ]
+                        },
+                        {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:fall_flying",
+                                    "inverted": true
+                                },
+                                {
+                                    "type": "origins:attribute",
+                                    "attribute": "minecraft:generic.armor",
+                                    "comparison": "<=",
+                                    "compare_to": 20
+                                },
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "*:*_bar",
+                                    "comparison": ">=",
+                                    "compare_to": 500
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_6/switch_main",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    }
+}

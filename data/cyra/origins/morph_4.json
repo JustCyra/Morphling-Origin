@@ -1,0 +1,38 @@
+{
+	"name": "Morphling IV",
+	"description": "Born from the elements of the earth iself and evolved via the nether.\nIt's only desire is to continue evolving itself until the inevitable end point is reached.",
+	"icon": {
+		"item": "minecraft:red_dye"
+	},
+	"impact": 3,
+	"order": 9,
+	"powers": [
+		"cyra:morph/stage_3/fiery_body",
+		"cyra:morph/stage_3/semiaquatic",
+		"cyra:morph/stage_1/exp",
+		"cyra:morph/stage_2/bottle",
+		"cyra:morph/stage_4/fire_resistant",
+		"cyra:morph/stage_4/blaze_barrage",
+		"cyra:morph/stage_3/freeze_sensitive",
+		"cyra:morph/stage_3/water_vulnerability",
+		"origins:damage_from_snowballs",
+		"origins:damage_from_potions",
+		"cyra:morph/stage_4/size",
+		"cyra:morph/stage_4/color",
+		"cyra:morph/stage_4/particles",
+		"cyra:morph/stage_3/sounds",
+		"cyra:morph/stage_1/tag",
+		"cyra:morph/stage_1/locked_2"
+	],
+	"unchoosable": true,
+	"upgrades": [
+		{
+			"condition": "minecraft:story/enter_the_end",
+			"origin": "cyra:morph_5"
+		}
+	],
+
+	"author": "Cyra",
+	"discord": "Cyra#9571",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

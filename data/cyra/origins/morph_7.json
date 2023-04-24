@@ -1,0 +1,33 @@
+{
+	"name": "Morphling §kFooled§r",
+	"description": "Born from the elements of the earth iself, evolved via the nether, polished by The End and completed by the Overworld.\nYour purpose is met, goals complete.\nTHERE IS NO WAY UP, ONLY DOWN.\n\n§kYou went all this way, but gained nothing...§r",
+	"icon": {
+		"item": "minecraft:structure_void"
+	},
+	"impact": 3,
+	"order": 9,
+	"powers": [
+		"cyra:morph/stage_6/description/complete",
+		"cyra:morph/stage_7/semiaquatic",
+		"cyra:morph/stage_6/exp",
+		"cyra:morph/stage_2/bottle",
+		"cyra:morph/stage_7/switch",
+		"cyra:morph/stage_6/description/fire_resistant",
+		"cyra:morph/stage_7/teleport",
+		"cyra:morph/stage_7/unstable",
+		"cyra:morph/stage_7/blaze_barrage",
+		"cyra:morph/stage_6/description/freeze_sensitive",
+		"cyra:morph/stage_7/water_vulnerability",
+		"origins:damage_from_potions",
+		"cyra:morph/stage_7/size",
+		"cyra:morph/stage_7/fool",
+		"cyra:morph/stage_7/no_escape",
+		"cyra:morph/stage_7/watcher",
+		"cyra:morph/stage_1/tag"
+	],
+	"unchoosable": true,
+
+	"author": "Cyra",
+	"discord": "Cyra#9571",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

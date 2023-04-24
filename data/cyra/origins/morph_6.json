@@ -1,0 +1,39 @@
+{
+	"name": "Morphling Master",
+	"description": "Born from the elements of the earth iself, evolved via the nether, polished by The End and completed by the Overworld.\nYour purpose is met, goals complete.\nThere is no more way up, only down.",
+	"icon": {
+		"item": "minecraft:magenta_dye"
+	},
+	"impact": 3,
+	"order": 9,
+	"powers": [
+		"cyra:morph/stage_6/description/complete",
+		"cyra:morph/stage_6/semiaquatic",
+		"cyra:morph/stage_6/exp",
+		"cyra:morph/stage_2/bottle",
+		"cyra:morph/stage_6/switch",
+		"cyra:morph/stage_6/description/fire_resistant",
+		"cyra:morph/stage_6/teleport",
+		"cyra:morph/stage_6/unstable",
+		"cyra:morph/stage_6/blaze_barrage",
+		"cyra:morph/stage_6/description/freeze_sensitive",
+		"cyra:morph/stage_6/water_vulnerability",
+		"origins:damage_from_potions",
+		"cyra:morph/stage_6/size",
+		"cyra:morph/stage_6/description/dummy",
+		"cyra:morph/stage_6/upgrade",
+		"cyra:morph/stage_1/tag"
+	],
+	"unchoosable": true,
+	"upgrades": [
+		{
+			"condition": "minecraft:nether/all_effects",
+			"origin": "cyra:morph_7",
+			"announcement": "§kYou can't feel it, all the effort it took, you gained nothing.§r"
+		}
+	],
+
+	"author": "Cyra",
+	"discord": "Cyra#9571",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

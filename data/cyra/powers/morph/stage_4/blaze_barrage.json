@@ -1,0 +1,209 @@
+{
+    "type": "origins:multiple",
+    "name": "Blaze Barrage",
+    "description": "Upon usage, you focus and fire up to 7 small fireball blasts.\nUnline before, these ones are much more accurate.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/active.png",
+            "text": "Active ability, use with %s"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Fires 1 small fireball on use\nThe lighter your armor, the more it knocks you back"
+        },
+        {
+            "sprite": "origins:textures/gui/badge/star.png",
+            "text": "Interval: 0.3 seconds\nHas 7 charges\nCharge cooldown: 1.5 seconds"
+        }
+    ],
+    "count": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 7,
+        "start_value": 7,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 7,
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "*:*_count",
+                        "comparison": "<",
+                        "compare_to": 7
+                    },
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "spectator",
+                        "inverted": true
+                    }
+                ]
+            }
+        }
+    },
+    "recharge": {
+        "type": "origins:action_over_time",
+        "interval": 25,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_count",
+            "change": 1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_count",
+            "comparison": "<",
+            "compare_to": 7
+        }
+    },
+    "fire": {
+        "type": "origins:fire_projectile",
+        "entity_type": "minecraft:small_fireball",
+        "cooldown": 6,
+        "hud_render": {
+            "should_render": false,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 3
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": true
+        },
+        "count": 1,
+        "speed": 0.25,
+        "divergence": 2,
+        "sound": "minecraft:entity.blaze.shoot",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_count",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "reduce": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_count",
+                    "change": -1
+                },
+                {
+                    "type": "origins:exhaust",
+                    "amount": 0.9
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 7
+                            },
+                            "action": {
+                                "type": "origins:if_else",
+                                "condition": {
+                                    "type": "origins:on_block"
+                                },
+                                "if_action": {
+                                    "type": "origins:if_else",
+                                    "condition": {
+                                        "type": "origins:sneaking",
+                                        "inverted": true
+                                    },
+                                    "if_action": {
+                                        "type": "origins:add_velocity",
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -0.15,
+                                        "space": "local",
+                                        "set": false
+                                    }
+                                },
+                                "else_action": {
+                                    "type": "origins:if_else",
+                                    "condition": {
+                                        "type": "origins:sneaking",
+                                        "inverted": true
+                                    },
+                                    "if_action": {
+                                        "type": "origins:add_velocity",
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -0.35,
+                                        "space": "local",
+                                        "set": false
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:attribute",
+                                "attribute": "minecraft:generic.armor",
+                                "comparison": "<=",
+                                "compare_to": 15
+                            },
+                            "action": {
+                                "type": "origins:if_else",
+                                "condition": {
+                                    "type": "origins:on_block"
+                                },
+                                "if_action": {
+                                    "type": "origins:if_else",
+                                    "condition": {
+                                        "type": "origins:sneaking",
+                                        "inverted": true
+                                    },
+                                    "if_action": {
+                                        "type": "origins:add_velocity",
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -0.10,
+                                        "space": "local",
+                                        "set": false
+                                    }
+                                },
+                                "else_action": {
+                                    "type": "origins:if_else",
+                                    "condition": {
+                                        "type": "origins:sneaking",
+                                        "inverted": true
+                                    },
+                                    "if_action": {
+                                        "type": "origins:add_velocity",
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -0.235,
+                                        "space": "local",
+                                        "set": false
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "cooldown": 6,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_count",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    }
+}

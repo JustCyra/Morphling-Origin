@@ -1,0 +1,32 @@
+{
+    "type": "origins:recipe",
+    "name": "Enchanting Knowledge",
+    "description": "The enchantment gave you deeper knowledge on how Bottle o' Enchanting works.\nYou can now make your own from glass bottles and lapis lazuli.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Recipe:\nB = Glass Bottle\nL = Lapis Lazuli\n\n  B L B\n  B L B\n  B B B\n\nResult: 7 Bottles o' Enchanting"
+        }
+    ],
+    "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "id": "cyra:morph/exp_bottles",
+        "pattern": [
+            "#L#",
+            "#L#",
+            "###"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:glass_bottle"
+            },
+            "L": {
+                "item": "minecraft:lapis_lazuli"
+            }
+        },
+        "result": {
+            "item": "minecraft:experience_bottle",
+            "count": 7
+        }
+    }
+}

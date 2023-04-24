@@ -1,0 +1,137 @@
+{
+    "type": "origins:action_on_callback",
+    "name": "Forever Perfect",
+    "description": "You evolved, constantly changed and improved.\nBut thanks to them, you will forever be this way.\nFor the better or worse, time will tell...",
+    "entity_action_added": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:delay",
+                "ticks": 6,
+                "action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morph/stage_final/switch_main",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_nether"
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_end"
+                    }
+                }
+            },
+            {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:sneaking",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "spectator",
+                            "inverted": true
+                        },
+                        {
+                            "type": "origins:status_effect",
+                            "effect": "minecraft:invisibility",
+                            "inverted": true
+                        }
+                    ]
+                },
+                "if_action": {
+                    "type": "origins:delay",
+                    "ticks": 6,
+                    "action": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_final/switch_main",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        "if_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 1,
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "particle minecraft:flame ~ ~0.8 ~ 0.2 0.4 0.2 0 125"
+                                    }
+                                },
+                                {
+                                    "type": "origins:delay",
+                                    "ticks": 10,
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "particle minecraft:flame ~ ~0.8 ~ 0.2 0.4 0.2 1 125"
+                                    }
+                                }
+                            ]
+                        },
+                        "else_action": {
+                            "type": "origins:delay",
+                            "ticks": 1,
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:reverse_portal ~ ~0.7 ~ 0 0 0 1 70"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "entity_action_respawned": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:delay",
+                "ticks": 6,
+                "action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "cyra:morph/stage_final/switch_main",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_nether"
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/size_end"
+                    }
+                }
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "cyra:morph/stage_final/teleport_bar",
+                "change": 1000,
+                "operation": "set"
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "cyra:morph/stage_final/teleport_unstable",
+                "change": 0,
+                "operation": "set"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:execute_command",
+        "command": "scale reset @s"
+    }
+}

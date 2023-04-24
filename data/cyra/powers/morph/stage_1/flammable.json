@@ -1,0 +1,19 @@
+{
+    "type": "origins:modify_damage_taken",
+    "name": "Fire Sick",
+    "description": "Due to not being accustomed to the common enviromental hazard 'fire', you take double damage from all fire sources.",
+    "badges": [
+      {
+        "sprite": "origins:textures/gui/badge/arrow_up.png",
+        "text": "Upgrades on §l[Morphling II]§r."
+      }
+    ],
+    "modifier": {
+      "value": 1,
+      "operation": "multiply_base"
+    },
+    "damage_condition": {
+      "type": "origins:fire"
+    }
+  }
+  

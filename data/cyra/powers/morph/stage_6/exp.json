@@ -1,0 +1,9 @@
+{
+    "type": "origins:modify_xp_gain",
+    "name": "Desire to Push on",
+    "description": "By nature, your wish was to evolve but now that goal is reached, only survival remains\nYou gain 25% more exp.",
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 0.25
+    }
+}

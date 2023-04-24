@@ -1,0 +1,19 @@
+{
+    "type": "origins:modify_damage_taken",
+    "name": "Fire Inherit",
+    "description": "Thanks to exposure to the nether items, your body adjusted and now fire damage is reduced by 50%",
+    "badges": [
+      {
+        "sprite": "origins:textures/gui/badge/arrow_up.png",
+        "text": "Upgrades on §l[Morphling IV]§r."
+      }
+    ],
+    "modifier": {
+      "name": "Origin modifier",
+      "value": -0.5,
+      "operation": "multiply_base"
+    },
+    "damage_condition": {
+      "type": "origins:fire"
+    }
+}

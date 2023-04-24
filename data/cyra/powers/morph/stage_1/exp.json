@@ -1,0 +1,15 @@
+{
+    "type": "origins:modify_xp_gain",
+    "name": "Desire to Learn",
+    "description": "By nature, you wish to evolve and so you gain 50% more experience as a result.",
+    "badges": [
+      {
+        "sprite": "origins:textures/gui/badge/arrow_up.png",
+        "text": "Downgrades on §l[Morphling VI]§r."
+      }
+    ],
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 0.5
+    }
+}

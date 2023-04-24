@@ -1,0 +1,32 @@
+{
+	"name": "Morphling",
+	"description": "A water elemental risen from the depths of the ocean and got transformed into a sentient being that is imbued with the overworld.\nIt's only desire is to continue evolving itself until the inevitable end point is reached.",
+	"icon": {
+		"item": "minecraft:gray_dye"
+	},
+	"impact": 2,
+	"order": 9,
+	"powers": [
+		"cyra:morph/stage_1/young",
+		"cyra:morph/stage_1/water_elemental",
+		"cyra:morph/stage_1/exp",
+		"cyra:morph/stage_1/flammable",
+		"cyra:morph/stage_1/size",
+		"cyra:morph/stage_1/color",
+		"cyra:morph/stage_1/particles",
+		"cyra:morph/stage_1/sounds",
+		"cyra:morph/stage_1/tag",
+		"cyra:morph/stage_1/locked_1",
+		"cyra:morph/stage_1/locked_2"
+	],
+	"upgrades": [
+		{
+			"condition": "minecraft:story/enchant_item",
+			"origin": "cyra:morph_2"
+		}
+	],
+
+	"author": "Cyra",
+	"discord": "Cyra#9571",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

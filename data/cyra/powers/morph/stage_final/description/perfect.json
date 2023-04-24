@@ -1,0 +1,11 @@
+{
+    "type": "origins:simple",
+    "name": "Perfect Body",
+    "description": "It's done.\nYou are at your peak.\nYou're now as Perfect as you can be for what you're able to do...",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "While in End Form:\n- You have 8 hearts\n- Are 10% slimmer\n- 25% less hunger usage\n\nWhile in Nether Form:\n- You have 8 hearts\n- Are 1.5 Blocks tall\n- 15% more movement speed\n- 10% less hunger usage"
+        }
+    ]
+}

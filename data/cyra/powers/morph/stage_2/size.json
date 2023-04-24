@@ -1,0 +1,75 @@
+{
+    "type": "origins:action_on_callback",
+    "name": "Ever Changing",
+    "description": "You ever so evolving, constantly changing and improving\nThe following advancement will evolve you further:\n\n          \"Into Fire\"",
+    "entity_action_added": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:delay",
+                "ticks": 10,
+                "action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:advancement",
+                        "advancement": "cyra:morph/stages/enchanted_self",
+                        "inverted": true
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "advancement grant @s only cyra:morph/stages/enchanted_self"
+                    }
+                }
+            },
+            {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:advancement",
+                    "advancement": "minecraft:nether/obtain_blaze_rod"
+                },
+                "if_action": {
+                    "type": "origins:execute_command",
+                    "command": "advancement revoke @s only minecraft:nether/obtain_blaze_rod"
+                }
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 1,
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "function cyra:morph/size_second"
+                }
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 2,
+                "action": {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:gamemode",
+                                "gamemode": "spectator",
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:status_effect",
+                                "effect": "minecraft:invisibility",
+                                "inverted": true
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:totem_of_undying ~ ~0.8 ~ 0.2 0.3 0.2 0.35 100"
+                    }
+                }
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:execute_command",
+        "command": "scale reset @s"
+    }
+}

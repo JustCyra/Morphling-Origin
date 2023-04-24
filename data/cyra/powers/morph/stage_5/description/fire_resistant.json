@@ -1,0 +1,15 @@
+{
+  "type": "origins:simple",
+  "name": "Fire Remnants",
+  "description": "The End effected you in a way that removed almost all fire resistance you had\nYou take 50% less fire damage.",
+  "badges": [
+    {
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": "Active in Nether Form."
+    },
+    {
+      "sprite": "origins:textures/gui/badge/arrow_up.png",
+      "text": "Upgrades on §l[Morphling VI]§r."
+    }
+  ]
+}

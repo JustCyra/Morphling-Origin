@@ -1,0 +1,11 @@
+{
+    "type": "origins:simple",
+    "name": "Time Walk §lLOCKED§r",
+    "description": "Exposure to The End gave you an ability to move freely though space and time. From others perspective, you appear to be moving much faster through the air than normal.\nThis is extremely tasking on the body. Using it too much is not advised.\nIn your current state, wings don't fit your body...",
+	"badges": [
+		{
+			"sprite": "origins:textures/gui/badge/arrow_up.png",
+			"text": "Unlocks on §l[Morphling V]§r.\nUpgrades on §l[Morphling VI]§r."
+		}
+	]
+}

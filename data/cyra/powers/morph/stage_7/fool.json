@@ -1,0 +1,1113 @@
+{
+    "hidden": "true",
+    "type": "origins:multiple",
+    "toggle": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 18
+        }
+    },
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 800,
+        "start_value": 800,
+        "hud_render": {
+            "should_render": false,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 20
+        }
+    },
+    "item": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 2,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 20
+        }
+    },
+    "deadline": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3600,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "deadline_countdown": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "cyra:morph/stage_7/fool_deadline",
+            "change": 1
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_deadline",
+                    "comparison": "<",
+                    "compare_to": 3600
+                },
+                {
+                    "type": "origins:gamemode",
+                    "gamemode": "creative",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:gamemode",
+                    "gamemode": "spectator",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "deadline_active": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s cyra:morph/stage_7/temp/cutscene"
+                },
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "minecraft:slowness",
+                        "duration": 3,
+                        "amplifier": 127,
+                        "is_ambient": true,
+                        "show_particles": false,
+                        "show_icon": false
+                    }
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:block.respawn_anchor.charge",
+                    "volume": 2
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 3,
+                    "action": {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:block.respawn_anchor.deplete",
+                        "volume": 2
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 4,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/teleport_particles"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 5,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "cyra:morph/stage_7/fool_toggle",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:choice",
+                                "actions": [
+                                    {
+                                        "element": {
+                                            "type": "origins:change_resource",
+                                            "resource": "cyra:morph/stage_7/fool_item",
+                                            "change": 0
+                                        },
+                                        "weight": 1
+                                    },
+                                    {
+                                        "element": {
+                                            "type": "origins:change_resource",
+                                            "resource": "cyra:morph/stage_7/fool_item",
+                                            "change": 1
+                                        },
+                                        "weight": 1
+                                    },
+                                    {
+                                        "element": {
+                                            "type": "origins:change_resource",
+                                            "resource": "cyra:morph/stage_7/fool_item",
+                                            "change": 2
+                                        },
+                                        "weight": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_deadline",
+                    "comparison": ">=",
+                    "compare_to": 3600
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_toggle",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:gamemode",
+                    "gamemode": "creative",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:gamemode",
+                    "gamemode": "spectator",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "countdown": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "cyra:morph/stage_7/fool_timer",
+            "change": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "immune_void": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "outOfWorld"
+        },
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "main": {
+        "type": "origins:action_over_time",
+        "interval": 100,
+        "hidden": true,
+        "entity_action": {
+            "type": "origins:chance",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s cyra:morph/stage_7/temp/cutscene"
+                    },
+                    {
+                        "type": "origins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:slowness",
+                            "duration": 3,
+                            "amplifier": 127,
+                            "is_ambient": true,
+                            "show_particles": false,
+                            "show_icon": false
+                        }
+                    },
+                    {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:block.respawn_anchor.charge",
+                        "volume": 2
+                    },
+                    {
+                        "type": "origins:delay",
+                        "ticks": 3,
+                        "action": {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:block.respawn_anchor.deplete",
+                            "volume": 2
+                        }
+                    },
+                    {
+                        "type": "origins:delay",
+                        "ticks": 4,
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "function cyra:morph/teleport_particles"
+                        }
+                    },
+                    {
+                        "type": "origins:delay",
+                        "ticks": 5,
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "cyra:morph/stage_7/fool_toggle",
+                                    "change": 1
+                                },
+                                {
+                                    "type": "origins:choice",
+                                    "actions": [
+                                        {
+                                            "element": {
+                                                "type": "origins:change_resource",
+                                                "resource": "cyra:morph/stage_7/fool_item",
+                                                "change": 0
+                                            },
+                                            "weight": 1
+                                        },
+                                        {
+                                            "element": {
+                                                "type": "origins:change_resource",
+                                                "resource": "cyra:morph/stage_7/fool_item",
+                                                "change": 1
+                                            },
+                                            "weight": 1
+                                        },
+                                        {
+                                            "element": {
+                                                "type": "origins:change_resource",
+                                                "resource": "cyra:morph/stage_7/fool_item",
+                                                "change": 2
+                                            },
+                                            "weight": 1
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "chance": 0.0001,
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "creative",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:gamemode",
+                        "gamemode": "spectator",
+                        "inverted": true
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "disable_abilities": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "cyra:morph/stage_7/teleport_bar",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "cyra:morph/stage_7/teleport_unstable",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "cyra:morph/stage_7/blaze_barrage_count",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "cyra:morph/stage_7/switch_cooldown",
+                    "change": 0,
+                    "operation": "set"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "maintain_0": {
+        "type": "origins:action_over_time",
+        "interval": 7,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dripping_water ~ ~0.5 ~ 0.3 0.7 0.3 0 2 force @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust 0 0.7 1 1 ~ ~0.5 ~ 0.3 0.7 0.3 0 25 force @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust 0 0.7 1 1 ~ ~0.5 ~ 0.3 0.7 0.3 0 25 @s"
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:dust 0 0.7 1 2 ~ ~0.5 ~ 0.3 0.7 0.3 0 5 @s"
+                    },
+                    "chance": 0.25
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_toggle",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_timer",
+                    "comparison": ">",
+                    "compare_to": 35
+                }
+            ]
+        }
+    },
+    "summmon_1": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 740
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:delay",
+                        "ticks": 3,
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "tp @s ~ ~ ~ -45 -25"
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:reverse_portal ~4 ~4 ~4 0.5 1 0.5 0.025 125 force @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:reverse_portal ~4 ~4 ~4 0.5 1 0.5 0.025 125 @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"You maybe be wandering...\",\"color\":\"light_purple\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "maintain_1": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "<",
+                "compare_to": 740
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:reverse_portal ~4 ~4 ~4 0.5 1 0.5 0.025 125 force @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:reverse_portal ~4 ~4 ~4 0.5 1 0.5 0.025 125 @s"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_toggle",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_timer",
+                    "comparison": ">",
+                    "compare_to": 40
+                }
+            ]
+        }
+    },
+    "summmon_2": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 680
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:delay",
+                        "ticks": 3,
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "tp @s ~ ~ ~ 45 -25"
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:flame ~-4 ~4 ~4 0.5 1 0.5 0.01 100 force @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:flame ~-4 ~4 ~4 0.5 1 0.5 0.01 100 @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"And have plenty of questions...\",\"color\":\"red\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "maintain_2": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "<",
+                "compare_to": 680
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:flame ~-4 ~4 ~4 0.5 1 0.5 0.01 100 force @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:flame ~-4 ~4 ~4 0.5 1 0.5 0.01 100 @s"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_toggle",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_timer",
+                    "comparison": ">",
+                    "compare_to": 40
+                }
+            ]
+        }
+    },
+    "summmon_3": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 620
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:delay",
+                        "ticks": 1,
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "tp @s ~ ~ ~ 0 -25"
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:composter ~0 ~4.5 ~5 0.5 1 0.5 0.1 65 force @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:composter ~0 ~4.5 ~5 0.5 1 0.5 0.1 65 @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:totem_of_undying ~0 ~4.5 ~5 0.5 1 0.5 0.1 10 force @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"Allow us to explain...\",\"color\":\"green\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "maintain_3": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "<",
+                "compare_to": 620
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:composter ~0 ~4.5 ~5 0.5 1 0.5 0.1 65 force @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:composter ~0 ~4.5 ~5 0.5 1 0.5 0.1 65 @s"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:totem_of_undying ~0 ~4.5 ~5 0.5 1 0.5 0.1 10 force @s"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_toggle",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "cyra:morph/stage_7/fool_timer",
+                    "comparison": ">",
+                    "compare_to": 40
+                }
+            ]
+        }
+    },
+    "text_4": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 560
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"We\",\"bold\":true,\"color\":\"green\"},{\"text\":\" kept tabs on you just like \",\"color\":\"green\"},{\"text\":\"many \",\"bold\":true,\"color\":\"green\"},{\"text\":\"others\",\"bold\":true,\"obfuscated\":true,\"color\":\"green\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_5": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 500
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"So it was agreed upon that \",\"color\":\"green\"},{\"text\":\"it's time\",\"bold\":true,\"color\":\"green\"},{\"text\":\"...\",\"color\":\"green\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_6": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 440
+            },
+            "if_action": {
+                "type": "origins:if_else_list",
+                "actions": [
+                    {
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_7/fool_item",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "function cyra:morph/overworld"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "tellraw @s [{\"text\":\"For you to recieve \",\"color\":\"green\"},{\"text\":\"The Mother Natures Gift\",\"bold\":true,\"color\":\"green\"}]"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_7/fool_item",
+                            "comparison": "==",
+                            "compare_to": 1
+                        },
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "function cyra:morph/nether"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "tellraw @s [{\"text\":\"For you to recieve \",\"color\":\"red\"},{\"text\":\"The Nether's Hatred\",\"bold\":true,\"color\":\"red\"}]"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_7/fool_item",
+                            "comparison": "==",
+                            "compare_to": 2
+                        },
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "function cyra:morph/end"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "tellraw @s [{\"text\":\"For you to recieve \",\"color\":\"light_purple\"},{\"text\":\"The End's Mutation\",\"bold\":true,\"color\":\"light_purple\"}]"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_7": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 360
+            },
+            "if_action": {
+                "type": "origins:if_else_list",
+                "actions": [
+                    {
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_7/fool_item",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "tellraw @s [{\"text\":\"Treasure it, thank it's existance...\",\"bold\":false,\"color\":\"green\"}]"
+                        }
+                    },
+                    {
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_7/fool_item",
+                            "comparison": "==",
+                            "compare_to": 1
+                        },
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "tellraw @s [{\"text\":\"Don't lose it, it's value is incomprehensible...\",\"bold\":false,\"color\":\"red\"}]"
+                        }
+                    },
+                    {
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "cyra:morph/stage_7/fool_item",
+                            "comparison": "==",
+                            "compare_to": 2
+                        },
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "tellraw @s [{\"text\":\"May this show you their feelings...\",\"bold\":false,\"color\":\"light_purple\"}]"
+                        }
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_8": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 300
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"There is so much more we wish to show you...\",\"color\":\"light_purple\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_9": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 240
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"Much to explain... But know this...\",\"color\":\"red\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_10": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 180
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"From now on, you are us three perfected...\",\"color\":\"green\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_11": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 120
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"Continue to push on, make us proud while we watch...\",\"color\":\"green\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_12": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 80
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"We don't have much time left... \",\"color\":\"green\"},{\"text\":\"The King\",\"obfuscated\":true,\"color\":\"green\"},{\"text\":\" knows...\",\"color\":\"green\"}]"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "text_13": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 40
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s [{\"text\":\"Until we meet again...\",\"color\":\"green\"}]"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:portal ~ ~1 ~ 0.128 0.256 0.128 1 2500"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "end": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "cyra:morph/stage_7/fool_timer",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power remove @s cyra:morph/stage_7/temp/cutscene"
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "cyra:morph/stage_7/fool_toggle",
+                        "change": -1
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "function cyra:morph/cutscene"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "origin set @s origins:origin cyra:morph_final"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "scoreboard players add #stats morph.perfect 1"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "cyra:morph/stage_7/fool_toggle",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    }
+}

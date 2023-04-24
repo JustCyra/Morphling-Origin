@@ -1,0 +1,1 @@
+give @s lime_dye{MorphedEssence: 1b, display:{Name:'[{"text":"Overworld essence","italic":false,"color":"green"}]',Lore:['[{"text":"Just holding it reminds you of infinite grass plains","italic":false}]']},Enchantments:[{id:"vanishing_curse",lvl:1}]}

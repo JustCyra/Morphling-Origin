@@ -1,0 +1,11 @@
+{
+    "type": "origins:simple",
+    "name": "Blaze Launcher §lLOCKED§r",
+    "description": "Upon usage, you focus and fire 3 small fireball blasts, although the amount of focus required is too great to have perfect aim at the moment.",
+	"badges": [
+		{
+			"sprite": "origins:textures/gui/badge/arrow_up.png",
+			"text": "Unlocks on §l[Morphling III]§r.\nUpgrades on §l[Morphling IV]§r."
+		}
+	]
+}

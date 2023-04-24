@@ -1,0 +1,65 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:oak_sapling"
+        },
+        "title": {
+            "text": "The \"Life Sprout\"",
+            "color": "green",
+            "italic": true
+        },
+        "description": {
+            "text": "Appreciate what nature has to offer by helping it live on.",
+            "color": "light_purple"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "cyra:morph/stages/mastered_powers",
+    "criteria": {
+        "lifesprout": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "player": [
+                    {
+                        "condition": "origins:origin",
+                        "origin": "cyra:morph_6"
+                    }
+                ],
+                "item": {
+                    "items": [
+                        "minecraft:oak_sapling"
+                    ],
+                    "count": {
+                        "min": 1,
+                        "max": 64
+                    },
+                    "nbt": "{display: {Name: '{\"text\":\"Life Sprout\"}'}}"
+                },
+                "location": {
+                    "dimension": "minecraft:overworld",
+                    "block": {
+                        "blocks": [
+                            "minecraft:podzol",
+                            "minecraft:mycelium",
+                            "minecraft:rooted_dirt",
+                            "minecraft:coarse_dirt",
+                            "minecraft:dirt",
+                            "minecraft:grass_block"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "lifesprout"
+        ]
+    ],
+    "rewards": {
+        "function": "cyra:morph/increment"
+    }
+}

@@ -1,0 +1,2 @@
+title @s actionbar {"text":"You have a sudden urge that there is someone watching you...","bold":true,"color":"white"}
+tellraw @s [{"text":"\nYou have a sudden urge that there is someone watching you...\n","bold":true,"color":"white"}]

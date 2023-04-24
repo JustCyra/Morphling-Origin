@@ -1,0 +1,98 @@
+{
+    "type": "origins:multiple",
+    "gain_loss": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:motion 1 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:reach 1 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:hitbox_height 1 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:hitbox_width 1 @s"
+                }
+            ]
+        },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:motion 0 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:reach 0 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:hitbox_height 0 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:hitbox_width 0 @s"
+                }
+            ]
+        }
+    },
+    "no_entities": {
+        "type": "origins:prevent_entity_render"
+    },
+    "no_blocks": {
+        "type": "origins:modify_block_render",
+        "block": "minecraft:air"
+    },
+    "invisible": {
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "no_damage_taken": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_damage_dealt": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_movement": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:motion 0 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:reach 0 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:hitbox_height 0 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:hitbox_width 0 @s"
+                }
+            ]
+        }
+    }
+}

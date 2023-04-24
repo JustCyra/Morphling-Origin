@@ -1,0 +1,11 @@
+{
+    "type": "origins:simple",
+    "name": "§kFinal§r Step",
+    "description": "§kYou §revolved...\nBut §know that's in the past§r, the goal §kyou reached for, §rdid nothi§kng§r f§kor you...§r\n\nOnly those that can advance forward 3 times for each dimension, will be able to tap into more power...",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/arrow_up.png",
+            "text": "Trust §kus and you will be§r rewarded...."
+        }
+    ]
+}

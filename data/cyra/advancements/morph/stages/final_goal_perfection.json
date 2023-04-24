@@ -1,0 +1,28 @@
+{
+    "display": {
+        "title": "Final Goal: Perfection",
+        "description": "New heights reached.\nYou unlocked Perfect Morphling permanently.",
+        "icon": {
+            "item": "minecraft:magenta_dye",
+            "nbt": "{Enchantments:[{id:\"vanishing_curse\",lvl:1}]}"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "morph_end": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "morph_end"
+        ]
+    ],
+    "rewards": {
+        "experience": 5000
+    },
+    "parent": "cyra:morph/its_time"
+}

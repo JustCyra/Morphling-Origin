@@ -1,0 +1,11 @@
+{
+    "type": "origins:simple",
+    "name": "Freeze Sensitive",
+    "description": "Inheriting The Nether made you take 5x more Freeze damage.",
+    "badges": [
+        {
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Active in Nether Form."
+        }
+    ]
+}

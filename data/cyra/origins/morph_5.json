@@ -1,0 +1,37 @@
+{
+	"name": "Morphling V",
+	"description": "Born from the elements of the earth iself, evolved via the nether and polished by The End.\nIt's only desire is to continue evolving itself until the inevitable end point is reached.",
+	"icon": {
+		"item": "minecraft:purple_dye"
+	},
+	"impact": 3,
+	"order": 9,
+	"powers": [
+		"cyra:morph/stage_5/description/slender",
+		"cyra:morph/stage_5/semiaquatic",
+		"cyra:morph/stage_1/exp",
+		"cyra:morph/stage_2/bottle",
+		"cyra:morph/stage_5/description/fire_resistant",
+		"cyra:morph/stage_5/description/freeze_sensitive",
+		"cyra:morph/stage_5/switch",
+		"cyra:morph/stage_5/teleport",
+		"cyra:morph/stage_5/unstable",
+		"cyra:morph/stage_5/blaze_barrage",
+		"cyra:morph/stage_5/water_vulnerability",
+		"origins:damage_from_potions",
+		"cyra:morph/stage_5/size",
+		"cyra:morph/stage_1/tag"
+	],
+	"unchoosable": true,
+	"upgrades": [
+		{
+			"condition": "minecraft:nether/all_potions",
+			"origin": "cyra:morph_6",
+			"announcement": "You can feel it, all the effort it took, you achieved the Ultimate Form.\nBut there is more to be gained...\nNew Advancements lead the way..."
+		}
+	],
+
+	"author": "Cyra",
+	"discord": "Cyra#9571",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

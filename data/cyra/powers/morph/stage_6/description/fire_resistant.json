@@ -1,0 +1,11 @@
+{
+  "type": "origins:simple",
+  "name": "Fire Remnants",
+  "description": "You still retain some fire resistance even after all this time.\nYou take 60% less fire damage.",
+  "badges": [
+    {
+      "sprite": "origins:textures/gui/badge/info.png",
+      "text": "Active in Nether Form."
+    }
+  ]
+}
