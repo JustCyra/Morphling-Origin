@@ -170,9 +170,8 @@
                             "compare_to": 6.0
                         },
                         {
-                            "type": "origins:origin",
-                            "origin": "origins-classes:explorer",
-                            "layer": "origins-classes:class",
+                            "type": "origins:predicate",
+                            "predicate": "cyra:entity/origin/origins-classes/explorer",
                             "inverted": true
                         }
                     ]
@@ -458,9 +457,8 @@
                 {
                     "type": "origins:if_else",
                     "condition": {
-                        "type": "origins:origin",
-                        "origin": "origins-classes:explorer",
-                        "layer": "origins-classes:class",
+                        "type": "origins:predicate",
+                        "predicate": "cyra:entity/origin/origins-classes/explorer",
                         "inverted": true
                     },
                     "if_action": {

@@ -57,7 +57,19 @@
             "divergence": 1.0,
             "sound": "minecraft:ambient.underwater.enter",
             "bientity_action": {
-                "type": "origins:mount"
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:mount"
+                    },
+                    {
+                        "type": "origins:actor_action",
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "function cyra:morphling/size/throw_self_hitbox"
+                        }
+                    }
+                ]
             }
         }
     },
@@ -124,8 +136,8 @@
         }
     },
     "invisible": {
-        "type": "extraorigins:modify_size",
-        "scale": 0.0,
+        "type": "origins:action_over_time",
+        "interval": 5,
         "condition": {
             "type": "origins:riding",
             "bientity_condition": {
@@ -135,6 +147,14 @@
                     "nbt": "{Tags: [\"morphling_water\"]}"
                 }
             }
+        },
+        "rising_action": {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[pehkui.scale_type=pehkui:hitbox_width, pehkui.scale=0.2..] run function cyra:morphling/size/throw_self_hitbox"
+        },
+        "falling_action": {
+            "type": "origins:execute_command",
+            "command": "function cyra:morphling/size/forms/small"
         }
     }
 }
