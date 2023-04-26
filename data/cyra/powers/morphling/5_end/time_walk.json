@@ -190,7 +190,7 @@
                         "type": "origins:damage",
                         "amount": 1.0,
                         "source": {
-                            "name": "unstableTime",
+                            "name": "cramming",
                             "bypasses_armor": true,
                             "unblockable": true
                         }
@@ -207,7 +207,7 @@
                         "type": "origins:damage",
                         "amount": 2.0,
                         "source": {
-                            "name": "unstableTime",
+                            "name": "cramming",
                             "bypasses_armor": true,
                             "unblockable": true
                         }
@@ -227,7 +227,7 @@
                                 "type": "origins:damage",
                                 "amount": 4.0,
                                 "source": {
-                                    "name": "unstableTime",
+                                    "name": "cramming",
                                     "bypasses_armor": true,
                                     "unblockable": true
                                 }
@@ -561,7 +561,7 @@
                         "type": "origins:damage",
                         "amount": 2,
                         "source": {
-                            "name": "unstableTime",
+                            "name": "cramming",
                             "unblockable": true,
                             "bypasses_armor": true
                         }
