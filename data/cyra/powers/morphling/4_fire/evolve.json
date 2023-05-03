@@ -22,9 +22,9 @@
                     "force": false,
                     "offset_y": 1.0,
                     "spread": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
+                        "x": 0.15,
+                        "y": 0.3,
+                        "z": 0.15
                     }
                 },
                 {
@@ -88,6 +88,11 @@
                     "sound": "minecraft:block.portal.trigger",
                     "volume": 1.0,
                     "pitch": 0.8
+                },
+                {
+                    "type": "origins:grant_power",
+                    "power": "cyra:morphling/4_fire/temp/lore",
+                    "source": "*:*"
                 }
             ]
         }

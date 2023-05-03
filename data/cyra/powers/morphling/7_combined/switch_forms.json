@@ -1,7 +1,7 @@
 {
     "type": "origins:multiple",
     "name": "Morph Body",
-    "description": "Harnessing your new found control you can toggle between End and Fire Forms.",
+    "description": "Harnessing your new-found control you can toggle between End and Fire Forms.",
     "badges": [
         {
             "type": "origins:keybind",

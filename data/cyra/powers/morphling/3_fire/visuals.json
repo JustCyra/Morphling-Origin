@@ -7,6 +7,12 @@
         "visible_in_first_person": false,
         "particle": {
             "type": "minecraft:flame"
+        },
+        "offset_y": 0.5,
+        "spread": {
+            "x": 0.15,
+            "y": 0.2,
+            "z": 0.15
         }
     },
     "particle_main_2": {
@@ -15,22 +21,40 @@
         "visible_in_first_person": false,
         "particle": {
             "type": "minecraft:flame"
+        },
+        "offset_y": 0.5,
+        "spread": {
+            "x": 0.15,
+            "y": 0.2,
+            "z": 0.15
         }
     },
     "particle_enchant_1": {
         "type": "origins:particle",
-        "frequency": 12,
+        "frequency": 23,
         "visible_in_first_person": false,
         "particle": {
             "type": "minecraft:enchant"
+        },
+        "offset_y": 0.5,
+        "spread": {
+            "x": 0.15,
+            "y": 0.2,
+            "z": 0.15
         }
     },
     "particle_enchant_2": {
         "type": "origins:particle",
-        "frequency": 15,
+        "frequency": 30,
         "visible_in_first_person": false,
         "particle": {
             "type": "minecraft:enchant"
+        },
+        "offset_y": 0.5,
+        "spread": {
+            "x": 0.15,
+            "y": 0.2,
+            "z": 0.15
         }
     },
     "particle_spawn": {
@@ -51,9 +75,9 @@
                         "force": false,
                         "offset_y": 0.5,
                         "spread": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "x": 0.15,
+                            "y": 0.2,
+                            "z": 0.15
                         }
                     },
                     {
@@ -66,9 +90,9 @@
                         "force": false,
                         "offset_y": 0.5,
                         "spread": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "x": 0.15,
+                            "y": 0.2,
+                            "z": 0.15
                         }
                     }
                 ]
@@ -102,9 +126,9 @@
                         "force": false,
                         "offset_y": 0.5,
                         "spread": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "x": 0.15,
+                            "y": 0.2,
+                            "z": 0.15
                         }
                     },
                     {
@@ -117,9 +141,9 @@
                         "force": false,
                         "offset_y": 0.5,
                         "spread": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "x": 0.15,
+                            "y": 0.2,
+                            "z": 0.15
                         }
                     }
                 ]
@@ -152,9 +176,9 @@
                         "force": false,
                         "offset_y": 0.5,
                         "spread": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "x": 0.15,
+                            "y": 0.2,
+                            "z": 0.15
                         }
                     },
                     {
@@ -167,9 +191,9 @@
                         "force": false,
                         "offset_y": 0.5,
                         "spread": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
+                            "x": 0.15,
+                            "y": 0.2,
+                            "z": 0.15
                         }
                     }
                 ]
@@ -223,11 +247,11 @@
                                     "count": 10,
                                     "speed": 0.3,
                                     "force": false,
-                                    "offset_y": 0.0,
+                                    "offset_y": 0.5,
                                     "spread": {
-                                        "x": 0.0,
-                                        "y": 0.0,
-                                        "z": 0.0
+                                        "x": 0.15,
+                                        "y": 0.2,
+                                        "z": 0.15
                                     }
                                 },
                                 {
@@ -238,11 +262,11 @@
                                     "count": 10,
                                     "speed": 0.3,
                                     "force": false,
-                                    "offset_y": 0.0,
+                                    "offset_y": 0.5,
                                     "spread": {
-                                        "x": 0.0,
-                                        "y": 0.0,
-                                        "z": 0.0
+                                        "x": 0.15,
+                                        "y": 0.2,
+                                        "z": 0.15
                                     }
                                 }
                             ]

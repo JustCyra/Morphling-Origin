@@ -1,0 +1,190 @@
+{
+    "type": "origins:multiple",
+    "name": "Temp: Throw Mass Form",
+    "remove_power": {
+        "type": "origins:action_over_time",
+        "interval": 2,
+        "condition": {
+            "type": "origins:riding",
+            "inverted": true,
+            "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:entity_type",
+                    "entity_type": "minecraft:potion"
+                }
+            }
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @e[distance=..4, type=minecraft:potion, tag=morphling_water, sort=nearest, limit=1]"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "function cyra:morphling/size/forms/small"
+                },
+                {
+                    "type": "origins:revoke_power",
+                    "power": "*:*",
+                    "source": "cyra:morphling/2_water/throw_self"
+                }
+            ]
+        }
+    },
+    "projectile": {
+        "type": "apugli:projectile_action_over_time",
+        "interval": 2,
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:potion"
+            }
+        },
+        "bientity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:riding"
+            },
+            "if_action": {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:spawn_particles",
+                    "particle": {
+                        "type": "minecraft:dust",
+                        "params": "0.5 0.5 1.0 1"
+                    },
+                    "count": 2,
+                    "speed": 0.3,
+                    "force": false,
+                    "offset_y": 0.0,
+                    "spread": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    }
+                }
+            },
+            "else_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:actor_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "function cyra:morphling/size/forms/small"
+                                },
+                                {
+                                    "type": "origins:revoke_power",
+                                    "power": "*:*",
+                                    "source": "cyra:morphling/2_water/throw_self"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "kill @s[type=minecraft:potion, tag=morphling_water]"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "prevent_collision": {
+        "type": "origins:prevent_entity_collision"
+    },
+    "invisible": {
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "damage_immunities": {
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "apugli:magic"
+                },
+                {
+                    "type": "origins:name",
+                    "name": "wither"
+                }
+            ]
+        }
+    },
+    "dismount_damaged": {
+        "type": "origins:action_when_damage_taken",
+        "cooldown": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "entity_action": {
+            "type": "origins:riding_action",
+            "recursive": false,
+            "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:entity_type",
+                    "entity_type": "minecraft:potion"
+                }
+            },
+            "bientity_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:actor_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:dismount"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "function cyra:morphling/size/forms/small"
+                                },
+                                {
+                                    "type": "origins:revoke_power",
+                                    "power": "*:*",
+                                    "source": "cyra:morphling/2_water/throw_self"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "kill @s[type=minecraft:potion, tag=morphling_water]"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "remove_mainhand_visual": {
+        "type": "apugli:modify_equipped_item_render",
+        "slot": "mainhand",
+        "override": true,
+        "stack": {
+            "item": "minecraft:air"
+        }
+    },
+    "remove_offhand_visual": {
+        "type": "apugli:modify_equipped_item_render",
+        "slot": "offhand",
+        "override": true,
+        "stack": {
+            "item": "minecraft:air"
+        }
+    }
+}

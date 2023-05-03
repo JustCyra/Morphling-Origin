@@ -12,9 +12,40 @@
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
             "bar_index": 0,
             "condition": {
-                "type": "origins:origin",
-                "origin": "cyra:morphling/7_combined/variant/end",
-                "layer": "cyra:variant"
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:origin",
+                        "origin": "cyra:morphling/7_combined/variant/end",
+                        "layer": "cyra:variant"
+                    },
+                    {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:origin",
+                                        "origin": "cyra:morphling/6_end",
+                                        "layer": "origins:origin"
+                                    },
+                                    {
+                                        "type": "origins:origin",
+                                        "origin": "cyra:morphling/5_end",
+                                        "layer": "origins:origin"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_stamina",
+                                "comparison": "<",
+                                "compare_to": 1000
+                            }
+                        ]
+                    }
+                ]
             }
         }
     },
@@ -51,15 +82,30 @@
         "start_value": 0,
         "hud_render": {
             "should_render": true,
-            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
-            "bar_index": 23,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 16,
             "condition": {
                 "type": "origins:and",
                 "conditions": [
                     {
-                        "type": "origins:origin",
-                        "origin": "cyra:morphling/7_combined/variant/end",
-                        "layer": "cyra:variant"
+                        "type": "origins:or",
+                        "conditions": [
+                            {
+                                "type": "origins:origin",
+                                "origin": "cyra:morphling/7_combined/variant/end",
+                                "layer": "cyra:variant"
+                            },
+                            {
+                                "type": "origins:origin",
+                                "origin": "cyra:morphling/6_end",
+                                "layer": "origins:origin"
+                            },
+                            {
+                                "type": "origins:origin",
+                                "origin": "cyra:morphling/5_end",
+                                "layer": "origins:origin"
+                            }
+                        ]
                     },
                     {
                         "type": "origins:resource",
@@ -104,7 +150,7 @@
             "type": "origins:change_resource",
             "resource": "*:*_unstable",
             "operation": "add",
-            "change": -60
+            "change": -70
         }
     },
 
@@ -118,9 +164,30 @@
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
             "bar_index": 7,
             "condition": {
-                "type": "origins:origin",
-                "origin": "cyra:morphling/7_combined/variant/fire",
-                "layer": "cyra:variant"
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:origin",
+                        "origin": "cyra:morphling/7_combined/variant/fire",
+                        "layer": "cyra:variant"
+                    },
+                    {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:origin",
+                                "origin": "cyra:morphling/4_fire",
+                                "layer": "origins:origin"
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_fireballs",
+                                "comparison": "<",
+                                "compare_to": 70
+                            }
+                        ]
+                    }
+                ]
             }
         }
     },

@@ -86,12 +86,7 @@
         "hud_render": {
             "should_render": true,
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 7,
-            "condition": {
-                "type": "origins:gamemode",
-                "gamemode": "spectator",
-                "inverted": true
-            }
+            "bar_index": 7
         },
         "key": {
             "key": "key.origins.primary_active",

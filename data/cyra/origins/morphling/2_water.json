@@ -1,6 +1,6 @@
 {
     "name": "Aqua Morphling §bII",
-    "description": "Made sentient from water alone, given shape to improve themselves and find a new purpose in life.",
+    "description": "Made sentient from water alone, given shape to improve themselves and find a new purpose in life.\n§oPure water is not a solution, mixing and matching with the elements means progress...",
     "icon": {
         "item": "minecraft:cyan_dye"
     },
@@ -24,7 +24,8 @@
         "cyra:morphling/2_water/evolve",
         "cyra:morphling/1_water/sounds",
         "cyra:morphling/2_water/visuals",
-        "cyra:morphling/1_water/block_interactions"
+        "cyra:morphling/1_water/block_interactions",
+        "cyra:morphling/qol"
     ],
 
 	"author": "Cyra",

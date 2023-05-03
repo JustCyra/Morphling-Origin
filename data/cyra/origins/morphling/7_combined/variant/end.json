@@ -1,6 +1,6 @@
 {
     "name": "§5End Form",
-    "description": "Your obtained End From.\nVulnerable to Water/Freezing/Fire but great at mobility.",
+    "description": "Your obtained End From.\nVulnerable to Water and Fire but great at mobility.",
     "icon": {
         "item": "minecraft:magenta_dye"
     },
@@ -8,7 +8,7 @@
     "order": 1,
     "powers": [
         "cyra:morphling/7_combined/end/form",
-        "cyra:morphling/7_combined/end/time_walk",
+        "cyra:morphling/5_end/time_walk",
 
         "cyra:morphling/5_end/sounds",
         "cyra:morphling/6_end/model_color",

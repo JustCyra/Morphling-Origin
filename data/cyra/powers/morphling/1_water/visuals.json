@@ -15,6 +15,12 @@
         "particle": {
             "type": "minecraft:dust",
             "params": "0.5 0.5 1.0 1"
+        },
+        "offset_y": 0.5,
+        "spread": {
+            "x": 0.15,
+            "y": 0.2,
+            "z": 0.15
         }
     },
     "particle_2": {
@@ -24,6 +30,12 @@
         "particle": {
             "type": "minecraft:dust",
             "params": "0.5 0.5 1.0 1"
+        },
+        "offset_y": 0.5,
+        "spread": {
+            "x": 0.15,
+            "y": 0.2,
+            "z": 0.15
         }
     },
     "particle_spawn": {
@@ -42,9 +54,9 @@
                 "force": false,
                 "offset_y": 0.5,
                 "spread": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "x": 0.15,
+                    "y": 0.2,
+                    "z": 0.15
                 }
             }
         }
@@ -74,9 +86,9 @@
                 "force": false,
                 "offset_y": 0.5,
                 "spread": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "x": 0.15,
+                    "y": 0.2,
+                    "z": 0.15
                 }
             }
         }
@@ -105,9 +117,9 @@
                 "force": false,
                 "offset_y": 0.5,
                 "spread": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
+                    "x": 0.15,
+                    "y": 0.2,
+                    "z": 0.15
                 }
             }
         }
@@ -157,11 +169,11 @@
                             "count": 10,
                             "speed": 1.0,
                             "force": false,
-                            "offset_y": 0.0,
+                            "offset_y": 0.5,
                             "spread": {
-                                "x": 0.0,
-                                "y": 0.0,
-                                "z": 0.0
+                                "x": 0.15,
+                                "y": 0.2,
+                                "z": 0.15
                             }
                         }
                     }

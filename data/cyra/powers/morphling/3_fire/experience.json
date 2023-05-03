@@ -1,6 +1,6 @@
 {
-    "name": "Desire to Learn",
-    "description": "By nature, you wish to evolve and so you gain 20% more experience as a result.",
+    "name": "Need to Learn",
+    "description": "It is in your nature to strive for change, and so you gain 20% more experience as a result.",
     "badges": [
         {
             "type": "origins:tooltip",

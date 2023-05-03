@@ -16,7 +16,7 @@
                             "\n+50% Water Swim Speed",
                             "\n+50% Water Visibility",
                             "\n+50% Lava Swim Speed",
-                            "\n+10% Movement Velocity",
+                            "\n+15% Movement Velocity",
                             "\n-80% Fire Damage Taken",
                             "\n-30% Model Size",
                             "\n+2 Armor"
@@ -90,7 +90,7 @@
         ],
         "modifier": {
             "operation": "multiply_base_multiplicative",
-            "value": 0.1
+            "value": 0.15
         }
     },
     "size": {
@@ -127,10 +127,17 @@
             "value": -0.8
         }
     },
+    "no_magma_damage": {
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "hotFloor"
+        }
+    },
     "lava_speed": {
-        "type": "origins:modify_attribute",
-        "attribute": "additionalentityattributes:lava_speed",
+        "type": "origins:attribute",
         "modifier": {
+            "attribute": "additionalentityattributes:lava_speed",
             "operation": "multiply_base",
             "value": 0.5
         }

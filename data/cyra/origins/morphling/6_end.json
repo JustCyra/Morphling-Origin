@@ -1,6 +1,6 @@
 {
     "name": "End Morphling §5II",
-    "description": "Made sentient from water alone but corrupted by The End, given shape to improve themselves and find a new purpose in life.",
+    "description": "Made sentient from water alone but corrupted by The End, given shape to improve themselves and find a new purpose in life.\n§oEvolution requires the strongest of wills...",
     "icon": {
         "item": "minecraft:magenta_dye"
     },
@@ -23,11 +23,13 @@
         "cyra:morphling/6_end/locked/switch_forms",
         
         "cyra:morphling/6_end/evolve",
+        "cyra:morphling/ability_resources",
         "cyra:morphling/3_fire/water_vulnerability",
 		"origins:damage_from_potions",
         "cyra:morphling/5_end/sounds",
         "cyra:morphling/6_end/model_color",
-        "cyra:morphling/5_end/visuals"
+        "cyra:morphling/5_end/visuals",
+        "cyra:morphling/qol"
     ],
 
 	"author": "Cyra",

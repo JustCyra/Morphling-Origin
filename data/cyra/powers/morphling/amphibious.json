@@ -1,7 +1,7 @@
 {
     "type": "origins:multiple",
     "name": "Amphibious",
-    "description": "You do not require to breathe anywhere!",
+    "description": "You do not need to breathe anywhere!",
     "natural_respiration": {
         "type": "apugli:modify_enchantment_level",
         "enchantment": "minecraft:respiration",

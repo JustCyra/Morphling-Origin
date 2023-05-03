@@ -22,9 +22,9 @@
                     "force": false,
                     "offset_y": 0.5,
                     "spread": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
+                        "x": 0.15,
+                        "y": 0.2,
+                        "z": 0.15
                     }
                 },
                 {
@@ -44,6 +44,18 @@
                     "sound": "minecraft:ui.toast.challenge_complete",
                     "volume": 1.0,
                     "pitch": 2.0
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:advancement",
+                        "advancement": "minecraft:story/enchant_item",
+                        "inverted": true
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "advancement grant @s only minecraft:story/enchant_item"
+                    }
                 },
                 {
                     "type": "origins:execute_command",

@@ -1,6 +1,6 @@
 {
     "name": "§cFire Form",
-    "description": "Your obtained Fire From.\nVulnerable to Water/Freezing but good at handeling heat and damage.",
+    "description": "Your obtained Fire From.\nVulnerable to Water and Freezing but good at handeling heat and damage.",
     "icon": {
         "item": "minecraft:red_dye"
     },
@@ -8,9 +8,13 @@
     "order": 1,
     "powers": [
         "cyra:morphling/7_combined/fire/form",
-        "cyra:morphling/7_combined/fire/blaze_barrage",
-        "cyra:morphling/7_combined/fire/fire_burnout",
-		"cyra:morphling/7_combined/fire/cold_intolarant",
+        "cyra:morphling/7_combined/fire/description/blaze_barrage",
+        "cyra:morphling/7_combined/fire/description/fire_burnout",
+        "cyra:morphling/7_combined/fire/description/cold_intolarant",
+
+        "cyra:morphling/4_fire/blaze_barrage",
+        "cyra:morphling/4_fire/fire_burnout",
+		"cyra:morphling/3_fire/cold_intolarant",
         
 		"origins:damage_from_snowballs",
         "cyra:morphling/3_fire/sounds",

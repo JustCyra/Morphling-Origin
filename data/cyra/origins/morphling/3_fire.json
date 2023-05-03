@@ -1,6 +1,6 @@
 {
     "name": "Fire Morphling §cI",
-    "description": "Made sentient from water alone but corrupted by The Nether, given shape to improve themselves and find a new purpose in life.",
+    "description": "Made sentient from water alone but corrupted by The Nether, given shape to improve themselves and find a new purpose in life.\n§oPast is best left to the past\nA new stage begins...",
     "icon": {
         "item": "minecraft:pink_dye"
     },
@@ -19,6 +19,8 @@
         "cyra:morphling/amphibious",
         "origins:like_water",
         "cyra:morphling/3_fire/blaze_launcher",
+		"cyra:morphling/3_fire/description/cold_intolarant",
+        
 		"cyra:morphling/3_fire/cold_intolarant",
 
         "cyra:morphling/3_fire/locked/fire_burnout",
@@ -29,7 +31,8 @@
 		"origins:damage_from_potions",
         "cyra:morphling/3_fire/sounds",
         "cyra:morphling/3_fire/model_color",
-        "cyra:morphling/3_fire/visuals"
+        "cyra:morphling/3_fire/visuals",
+        "cyra:morphling/qol"
     ],
 
 	"author": "Cyra",

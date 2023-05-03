@@ -1,0 +1,202 @@
+{
+    "name": "Temp: Stage 6 to 7",
+    "type": "origins:action_over_time",
+    "interval": 4,
+    "entity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:origin",
+            "origin": "cyra:morphling/6_end",
+            "layer": "origins:origin",
+            "inverted": true
+        },
+        "if_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:revoke_power",
+                    "power": "*:*",
+                    "source": "cyra:morphling/6_end/evolve"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "title @s actionbar {\"text\": \"We are Whole\", \"color\": \"gray\", \"obfuscated\": true}"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "title @s actionbar {\"text\": \"We are Whole\", \"color\": \"blue\"}"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 30,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "title @s actionbar {\"text\": \"We are Whole\", \"color\": \"gray\", \"obfuscated\": true}"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 32,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "title @s actionbar {\"text\": \"\", \"color\": \"gray\", \"obfuscated\": true}"
+                    }
+                }
+            ]
+        },
+        "else_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "title @s actionbar {\"text\": \"Must think... Keep control...\", \"color\": \"gray\", \"obfuscated\": true}"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:choice",
+                        "actions": [
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:nothing"
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Progress is Evolution\", \"color\": \"aqua\", \"obfuscated\": true}"
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Embrace Porgress\", \"color\": \"red\", \"obfuscated\": true}"
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Break Reality\", \"color\": \"dark_purple\", \"bold\", true}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Must... Push... Nn\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"A step for myself\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Hold it together\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Merging into Perfection\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Merging into Perfection\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Merging into Perfection\", \"color\": \"dark_purple\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Back once more\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Oceans of Fire need done\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"The final push\", \"color\": \"dark_purple\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Links of all\", \"color\": \"dark_purple\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Connections\", \"color\": \"dark_purple\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Patience\", \"color\": \"dark_purple\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Truth\", \"color\": \"dark_purple\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Knowledge\", \"color\": \"dark_purple\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Us\", \"color\": \"dark_purple\", \"bold\": true}"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

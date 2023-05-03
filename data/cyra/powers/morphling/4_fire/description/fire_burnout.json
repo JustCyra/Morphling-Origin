@@ -1,12 +1,27 @@
 {
-    "name": "Need to Learn",
-    "description": "It is in your nature to strive for change, and so you gain 25% more experience as a result.",
+    "type": "origins:simple",
+
+    "name": "Burnout",
+    "description": "Your inner fire combined with other sources of fire removes any Hunger or Poison effects currently on you!",
     "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": {
+                "text": "When taking Fire Damage:",
+                "extra": [
+                    {
+                        "text": "\nRemove Hunger and Poison Status Effects",
+                        "color": "green"
+                    }
+                ]
+            }
+        },
         {
             "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/arrow_up.png",
             "text": {
-                "text": "Upgrades on ",
+                "text": "Changes on ",
                 "extra": [
                     {
                         "text": "[",
@@ -24,11 +39,5 @@
                 ]
             }
         }
-    ],
-
-    "type": "origins:modify_xp_gain",
-    "modifier": {
-        "operation": "multiply_base_multiplicative",
-        "value": 0.25
-    }
+    ]
 }

@@ -1,7 +1,7 @@
 {
     "type": "origins:multiple",
     "name": "Unstable Waterborn",
-    "description": "The End corrupted you. You are once more vulnerable to fire while water is still a problem but posses incredible reality displacement abilities.",
+    "description": "The End corrupted you. You are vulnerable to fire once again, and now water is new problem for you. However, the corruption has gifted you new unique reality displacement abilities.",
     "badges": [
         {
             "type": "origins:tooltip",
@@ -15,7 +15,10 @@
                         "extra": [
                             "\n+50% Water Swim Speed",
                             "\n+50% Water Visibility",
-                            "\n-30% Model Width"
+                            "\n-30% Hunger Usage",
+                            "\n-30% Model Width",
+                            "\n+1.0 Block Reach",
+                            "\n+0.5 Attack Reach"
                         ]
                     },
                     {
@@ -71,8 +74,25 @@
                 "attribute": "minecraft:generic.max_health",
                 "operation": "addition",
                 "value": -6
+            },
+            {
+                "attribute": "reach-entity-attributes:attack_range",
+                "operation": "addition",
+                "value": 0.5
+            },
+            {
+                "attribute": "reach-entity-attributes:reach",
+                "operation": "addition",
+                "value": 1.0
             }
         ]
+    },
+    "less_exhaust": {
+        "type": "origins:modify_exhaustion",
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": -0.3
+        }
     },
     "size": {
         "type": "origins:action_on_callback",

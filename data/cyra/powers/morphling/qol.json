@@ -1,0 +1,14 @@
+{
+    "type": "origins:multiple",
+    "hidden": true,
+    "perfect_crouch_jump_height": {
+        "type": "origins:modify_jump",
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "modifier": {
+            "operation": "set_total",
+            "value": 0.341
+        }
+    }
+}

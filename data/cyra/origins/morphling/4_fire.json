@@ -18,17 +18,23 @@
         "cyra:morphling/extinguish",
         "cyra:morphling/amphibious",
         "origins:like_water",
+        "cyra:morphling/4_fire/description/blaze_barrage",
+        "cyra:morphling/4_fire/description/fire_burnout",
+		"cyra:morphling/3_fire/description/cold_intolarant",
+
         "cyra:morphling/4_fire/blaze_barrage",
         "cyra:morphling/4_fire/fire_burnout",
 		"cyra:morphling/3_fire/cold_intolarant",
         
         "cyra:morphling/4_fire/evolve",
+        "cyra:morphling/ability_resources",
         "cyra:morphling/3_fire/water_vulnerability",
 		"origins:damage_from_snowballs",
 		"origins:damage_from_potions",
         "cyra:morphling/3_fire/sounds",
         "cyra:morphling/4_fire/model_color",
-        "cyra:morphling/3_fire/visuals"
+        "cyra:morphling/3_fire/visuals",
+        "cyra:morphling/qol"
     ],
 
 	"author": "Cyra",

@@ -1,0 +1,264 @@
+{
+    "name": "Temp: Stage 2 to 3",
+    "type": "origins:action_over_time",
+    "interval": 4,
+    "entity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:origin",
+            "origin": "cyra:morphling/2_water",
+            "layer": "origins:origin",
+            "inverted": true
+        },
+        "if_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:revoke_power",
+                    "power": "*:*",
+                    "source": "cyra:morphling/2_water/evolve"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "title @s actionbar {\"text\": \"Fire, a Key to Evolution...\", \"color\": \"gray\", \"obfuscated\": true}"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "title @s actionbar {\"text\": \"Fire, a Key to Evolution...\", \"color\": \"red\"}"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 30,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "title @s actionbar {\"text\": \"Fire, a Key to Evolution...\", \"color\": \"gray\", \"obfuscated\": true}"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 32,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "title @s actionbar {\"text\": \"\", \"color\": \"gray\", \"obfuscated\": true}"
+                    }
+                }
+            ]
+        },
+        "else_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "title @s actionbar {\"text\": \"Must think... Keep control...\", \"color\": \"gray\", \"obfuscated\": true}"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:choice",
+                        "actions": [
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:nothing"
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Progress is Evolution\", \"color\": \"aqua\", \"obfuscated\": true}"
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Reject past, welcome progress\", \"color\": \"red\", \"obfuscated\": true}"
+                                }
+                            },
+                            {
+                                "weight": 2,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Is this worth it?\", \"color\": \"aqua\", \"bold\", true}"
+                                }
+                            },
+                            {
+                                "weight": 2,
+                                "element": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "title @s actionbar {\"text\": \"WHAT H-\", \"color\": \"aqua\"}"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 1,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "title @s actionbar {\"text\": \"AVE I'VE DONE?\", \"color\": \"gray\", \"obfuscated\": true}"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 2,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"You, did this\", \"color\": \"red\", \"bold\", true}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Must move on\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Can't hold on\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"More elements\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Just water is not enough\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"A step for a better self\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"A step for myself\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Must keep thinking\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Hold it together\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"The noises...\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Can you hear it?\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"What have I done...\", \"color\": \"aqua\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"A new form awaits\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Anything for progress\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"A new chapter begins\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Exploration meets Wrath\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"A new beggining\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Creation and Destruction, merge...\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"No cost to great\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"A new shade of, me\", \"color\": \"red\"}"
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "element": {
+                                    "type": "origins:execute_command",
+                                    "command": "title @s actionbar {\"text\": \"Oceans of Fire need done\", \"color\": \"red\"}"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

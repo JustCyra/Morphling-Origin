@@ -1,5 +1,5 @@
 {
-    "name": "Self Preserving",
+    "name": "Self Preservation",
     "description": "Fire doesn't hold on to you for long, you extinguish yourself if set on fire.",
     
     "type": "origins:modify_damage_taken",
