@@ -18,10 +18,10 @@
             "sprite": "origins:textures/gui/badge/star.png",
             "text": [
                 {
-                    "text": "Charges:                        ",
+                    "text": "Charges:",
                     "extra": [
                         {
-                            "text": "2",
+                            "text": "2                        ",
                             "obfuscated": true
                         }
                     ]

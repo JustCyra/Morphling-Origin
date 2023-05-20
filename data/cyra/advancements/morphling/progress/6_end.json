@@ -7,8 +7,7 @@
             "text": "Reach the sixth stage of Morphling by absorbing the unstable powers of Chorus Fruit while wearing a Dragon Head"
         },
         "icon": {
-            "item": "minecraft:magenta_dye",
-            "nbt": "{Enchantments: [{}]}"
+            "item": "minecraft:magenta_dye"
         },
         "frame": "goal",
         "show_toast": true,

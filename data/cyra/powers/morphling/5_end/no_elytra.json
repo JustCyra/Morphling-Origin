@@ -36,7 +36,7 @@
             "type": "origins:fall_flying"
         },
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": -0.75
         }
     }

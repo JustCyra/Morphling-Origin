@@ -120,7 +120,7 @@
             "name": "freeze"
         },
         "modifier": {
-            "operation": "multiply_base",
+            "operation": "multiply_base_additive",
             "value": 4
         }
     }

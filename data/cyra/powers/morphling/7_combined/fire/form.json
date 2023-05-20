@@ -43,7 +43,7 @@
             "z"
         ],
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": 0.15
         }
     },
@@ -77,7 +77,7 @@
             "type": "origins:fire"
         },
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": -0.6
         }
     },

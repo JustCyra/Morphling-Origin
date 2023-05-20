@@ -9,9 +9,9 @@
             "color": "#7700f7"
         },
         "description": {
-            "text": "List of Origins created by Cyra#9571\nHave Fun!"
+            "text": "List of Origins created by Cyra\nHave Fun!"
         },
-        "background": "minecraft:textures/block/grass_block_top.png",
+        "background": "minecraft:textures/block/obsidian.png",
         "frame": "task",
         "show_toast": false,
         "announce_to_chat": false,

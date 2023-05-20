@@ -69,6 +69,11 @@
                 "value": 0.5
             },
             {
+                "attribute": "additionalentityattributes:lava_speed",
+                "operation": "multiply_base",
+                "value": 0.25
+            },
+            {
                 "attribute": "minecraft:generic.max_health",
                 "operation": "addition",
                 "value": -6
@@ -83,7 +88,7 @@
             "z"
         ],
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": 0.15
         }
     },
@@ -117,16 +122,8 @@
             "type": "origins:fire"
         },
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": -0.4
-        }
-    },
-    "lava_speed": {
-        "type": "origins:attribute",
-        "modifier": {
-            "attribute": "additionalentityattributes:lava_speed",
-            "operation": "multiply_base",
-            "value": 0.25
         }
     },
     "lava_vision": {

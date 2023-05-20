@@ -7,8 +7,7 @@
             "text": "Reach the second stage of Morphling by enchanting yourself"
         },
         "icon": {
-            "item": "minecraft:cyan_dye",
-            "nbt": "{Enchantments: [{}]}"
+            "item": "minecraft:cyan_dye"
         },
         "frame": "goal",
         "show_toast": true,

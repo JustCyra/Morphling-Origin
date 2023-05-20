@@ -7,8 +7,7 @@
             "text": "Reach the fourth stage of Morphling by absorbing a blast from a Respawn Anchor in Overworld"
         },
         "icon": {
-            "item": "minecraft:red_dye",
-            "nbt": "{Enchantments: [{}]}"
+            "item": "minecraft:red_dye"
         },
         "frame": "goal",
         "show_toast": true,

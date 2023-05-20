@@ -7,8 +7,7 @@
             "text": "Reach the third stage of Morphling by absorbing a Blaze Rod into yourself"
         },
         "icon": {
-            "item": "minecraft:pink_dye",
-            "nbt": "{Enchantments: [{}]}"
+            "item": "minecraft:pink_dye"
         },
         "frame": "goal",
         "show_toast": true,

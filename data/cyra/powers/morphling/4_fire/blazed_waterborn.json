@@ -70,6 +70,11 @@
                 "value": 0.5
             },
             {
+                "attribute": "additionalentityattributes:lava_speed",
+                "operation": "multiply_base",
+                "value": 0.5
+            },
+            {
                 "attribute": "minecraft:generic.armor",
                 "operation": "addition",
                 "value": 2
@@ -89,7 +94,7 @@
             "z"
         ],
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": 0.15
         }
     },
@@ -123,7 +128,7 @@
             "type": "origins:fire"
         },
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": -0.8
         }
     },
@@ -132,14 +137,6 @@
         "damage_condition": {
             "type": "origins:name",
             "name": "hotFloor"
-        }
-    },
-    "lava_speed": {
-        "type": "origins:attribute",
-        "modifier": {
-            "attribute": "additionalentityattributes:lava_speed",
-            "operation": "multiply_base",
-            "value": 0.5
         }
     },
     "lava_vision": {

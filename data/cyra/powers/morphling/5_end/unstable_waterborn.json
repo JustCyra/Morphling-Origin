@@ -90,7 +90,7 @@
     "less_exhaust": {
         "type": "origins:modify_exhaustion",
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": -0.3
         }
     },
@@ -139,7 +139,7 @@
             "type": "origins:fire"
         },
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base_additive",
             "value": 2
         }
     }
