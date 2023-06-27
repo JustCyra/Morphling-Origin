@@ -60,93 +60,6 @@
             }
         }
     ],
-    "damage_unstable": {
-        "type": "origins:action_over_time",
-        "interval": 40,
-        "entity_action": {
-            "type": "origins:if_else_list",
-            "actions": [
-                {
-                    "condition": {
-                        "type": "origins:resource",
-                        "resource": "cyra:morphling/ability_resources_unstable",
-                        "comparison": ">",
-                        "compare_to": 2000
-                    },
-                    "action": {
-                        "type": "origins:damage",
-                        "amount": 1.0,
-                        "source": {
-                            "name": "cramming",
-                            "bypasses_armor": true,
-                            "unblockable": true
-                        }
-                    }
-                },
-                {
-                    "condition": {
-                        "type": "origins:resource",
-                        "resource": "cyra:morphling/ability_resources_unstable",
-                        "comparison": ">",
-                        "compare_to": 2500
-                    },
-                    "action": {
-                        "type": "origins:damage",
-                        "amount": 2.0,
-                        "source": {
-                            "name": "cramming",
-                            "bypasses_armor": true,
-                            "unblockable": true
-                        }
-                    }
-                },
-                {
-                    "condition": {
-                        "type": "origins:resource",
-                        "resource": "cyra:morphling/ability_resources_unstable",
-                        "comparison": ">",
-                        "compare_to": 3000
-                    },
-                    "action": {
-                        "type": "origins:and",
-                        "actions": [
-                            {
-                                "type": "origins:damage",
-                                "amount": 4.0,
-                                "source": {
-                                    "name": "cramming",
-                                    "bypasses_armor": true,
-                                    "unblockable": true
-                                }
-                            },
-                            {
-                                "type": "origins:apply_effect",
-                                "effects": [
-                                    {
-                                        "effect": "minecraft:nausea",
-                                        "duration": 100,
-                                        "amplifier": 1,
-                                        "is_ambient": false,
-                                        "show_particles": false,
-                                        "show_icon": true
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
-    },
-    "shake_when_unstable": {
-        "type": "origins:shaking",
-        "condition": {
-            "type": "origins:resource",
-            "resource": "cyra:morphling/ability_resources_unstable",
-            "comparison": ">",
-            "compare_to": 2000
-        }
-    },
     "teleport": {
         "type": "origins:active_self",
         "cooldown": 5,
@@ -171,7 +84,7 @@
                         },
                         {
                             "type": "origins:predicate",
-                            "predicate": "cyra:entity/origin/origins-classes/explorer",
+                            "predicate": "cyra:entity/origins-classes/explorer",
                             "inverted": true
                         }
                     ]
@@ -283,23 +196,80 @@
             "type": "origins:and",
             "actions": [
                 {
-                    "type": "origins:add_velocity",
-                    "x": 0.00,
-                    "y": 0.15,
-                    "z": 2.00,
-                    "space": "local",
-                    "set": true
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:riding",
+                        "bientity_condition": {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:entity_type",
+                                "entity_type": "minecraft:potion"
+                            }
+                        }
+                    },
+                    "if_action": {
+                        "type": "origins:riding_action",
+                        "recursive": false,
+                        "bientity_condition": {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:entity_type",
+                                "entity_type": "minecraft:potion"
+                            }
+                        },
+                        "bientity_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:actor_action",
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "data modify entity @e[limit=1, distance=..0.5, type=minecraft:potion] Rotation set from entity @s Rotation"
+                                    }
+                                },
+                                {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:add_velocity",
+                                        "x": 0.00,
+                                        "y": 0.15,
+                                        "z": 1.50,
+                                        "space": "local",
+                                        "set": true
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "else_action": {
+                        "type": "origins:add_velocity",
+                        "x": 0.00,
+                        "y": 0.15,
+                        "z": 2.00,
+                        "space": "local",
+                        "set": true
+                    }
                 },
                 {
                     "type": "origins:apply_effect",
-                    "effect": {
-                        "effect": "minecraft:slowness",
-                        "duration": 1,
-                        "amplifier": 4,
-                        "is_ambient": false,
-                        "show_particles": false,
-                        "show_icon": false
-                    }
+                    "effects": [
+                        {
+                            "effect": "minecraft:slowness",
+                            "duration": 2,
+                            "amplifier": 4,
+                            "is_ambient": false,
+                            "show_particles": false,
+                            "show_icon": false
+                        },
+                        {
+                            "effect": "minecraft:invisibility",
+                            "duration": 3,
+                            "amplifier": 0,
+                            "is_ambient": false,
+                            "show_particles": false,
+                            "show_icon": false
+                        }
+                    ]
                 },
                 {
                     "type": "origins:play_sound",
@@ -437,28 +407,72 @@
                     ]
                 },
                 {
-                    "type": "origins:if_else",
-                    "condition": {
-                        "type": "origins:resource",
-                        "resource": "cyra:morphling/ability_resources_unstable",
-                        "comparison": ">",
-                        "compare_to": 2000
-                    },
-                    "if_action": {
-                        "type": "origins:damage",
-                        "amount": 2,
-                        "source": {
-                            "name": "cramming",
-                            "unblockable": true,
-                            "bypasses_armor": true
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "cyra:morphling/ability_resources_unstable",
+                                "comparison": ">",
+                                "compare_to": 3000
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:damage",
+                                        "amount": 4.0,
+                                        "damage_type": "cyra:morphling/unstable"
+                                    },
+                                    {
+                                        "type": "origins:apply_effect",
+                                        "effects": [
+                                            {
+                                                "effect": "minecraft:nausea",
+                                                "duration": 100,
+                                                "amplifier": 1,
+                                                "is_ambient": false,
+                                                "show_particles": false,
+                                                "show_icon": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "cyra:morphling/ability_resources_unstable",
+                                "comparison": ">",
+                                "compare_to": 2500
+                            },
+                            "action": {
+                                "type": "origins:damage",
+                                "amount": 2.0,
+                                "damage_type": "cyra:morphling/unstable"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "cyra:morphling/ability_resources_unstable",
+                                "comparison": ">",
+                                "compare_to": 2000
+                            },
+                            "action": {
+                                "type": "origins:damage",
+                                "amount": 1.0,
+                                "damage_type": "cyra:morphling/unstable"
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "type": "origins:if_else",
                     "condition": {
                         "type": "origins:predicate",
-                        "predicate": "cyra:entity/origin/origins-classes/explorer",
+                        "predicate": "cyra:entity/origins-classes/explorer",
                         "inverted": true
                     },
                     "if_action": {

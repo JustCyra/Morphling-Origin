@@ -5,17 +5,19 @@
         "item": "minecraft:magenta_dye"
     },
     "impact": 3,
-    "order": 1,
+    "order": 2,
     "powers": [
         "cyra:morphling/7_combined/end/form",
         "cyra:morphling/5_end/time_walk",
 
+        "cyra:morphling/3_fire/water_vulnerability",
+		"origins:damage_from_potions",
         "cyra:morphling/5_end/sounds",
         "cyra:morphling/6_end/model_color",
-        "cyra:morphling/5_end/visuals"
+        "cyra:morphling/7_combined/end/visuals"
     ],
 
 	"author": "Cyra",
-	"discord": "Cyra#9571",
+	"discord": "just_cyra",
 	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
 }

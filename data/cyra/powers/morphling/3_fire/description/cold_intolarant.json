@@ -2,7 +2,7 @@
     "type": "origins:simple",
 
     "name": "Cold Sensitive",
-    "description": "Being exposed to cold or water makes you chilly and slower.\nWater items and blocks do damage to you and you take more Freezing Damage.",
+    "description": "Being exposed to cold or water makes you chilly and slower.",
     "badges": [
         {
             "type": "origins:tooltip",

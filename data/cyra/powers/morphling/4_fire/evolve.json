@@ -40,8 +40,8 @@
                     "pitch": 2.0
                 },
                 {
-                    "type": "origins:execute_command",
-                    "command": "advancement grant @s only cyra:morphling/progress/5_end"
+                    "type": "origins:grant_advancement",
+                    "advancement": "cyra:morphling/progress/5_end"
                 }
             ]
         },
@@ -150,6 +150,11 @@
                 {
                     "type": "origins:dimension",
                     "dimension": "minecraft:the_end"
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "cyra:morphling/progress/5_end",
+                    "inverted": true
                 }
             ]
         },

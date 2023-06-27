@@ -5,7 +5,7 @@
         "item": "minecraft:red_dye"
     },
     "impact": 3,
-    "order": 4,
+    "order": 11,
     "upgrades": [
 		{
 			"condition": "cyra:morphling/progress/5_end",
@@ -38,6 +38,6 @@
     ],
 
 	"author": "Cyra",
-	"discord": "Cyra#9571",
+	"discord": "just_cyra",
 	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
 }

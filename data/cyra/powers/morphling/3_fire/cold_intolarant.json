@@ -116,8 +116,8 @@
     "more_freeze_damage": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
-            "type": "origins:name",
-            "name": "freeze"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_freezing"
         },
         "modifier": {
             "operation": "multiply_base_additive",

@@ -16,13 +16,15 @@
         "cyra:morphling/4_fire/fire_burnout",
 		"cyra:morphling/3_fire/cold_intolarant",
         
+        "cyra:morphling/3_fire/water_vulnerability",
 		"origins:damage_from_snowballs",
+		"origins:damage_from_potions",
         "cyra:morphling/3_fire/sounds",
         "cyra:morphling/4_fire/model_color",
-        "cyra:morphling/3_fire/visuals"
+        "cyra:morphling/7_combined/fire/visuals"
     ],
 
 	"author": "Cyra",
-	"discord": "Cyra#9571",
+	"discord": "just_cyra",
 	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
 }

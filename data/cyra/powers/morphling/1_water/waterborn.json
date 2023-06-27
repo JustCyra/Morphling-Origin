@@ -1,21 +1,20 @@
 {
     "type": "origins:multiple",
     "name": "Waterborn",
-    "description": "Creatures from the sea aren't know for their toughness except a select few, but they are great at being mobile.",
+    "description": "Beings from the sea aren't know for their toughness except for a select few, but they are great at being mobile.",
     "badges": [
         {
             "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
             "text": {
-                "text": "Form Stats:",
+                "text": "Aqua Morphling Attributes:",
                 "extra": [
                     {
                         "text": "",
                         "color": "green",
                         "extra": [
+                            "\nBetter Water Vision",
                             "\n+50% Water Swim Speed",
-                            "\n+100% Water Visibility",
-                            "\n+15% Movement Velocity",
                             "\n-30% Model Size"
                         ]
                     },
@@ -24,6 +23,7 @@
                         "color": "red",
                         "extra": [
                             "\n-8 Max Health",
+                            "\n-20% Movement Speed on Land",
                             "\n+200% Fire Damage Taken"
                         ]
                     }
@@ -58,14 +58,14 @@
         "update_health": true,
         "modifiers": [
             {
-                "attribute": "additionalentityattributes:water_speed",
-                "operation": "multiply_base",
-                "value": 0.5
-            },
-            {
                 "attribute": "additionalentityattributes:water_visibility",
                 "operation": "multiply_base",
                 "value": 1
+            },
+            {
+                "attribute": "additionalentityattributes:water_speed",
+                "operation": "multiply_base",
+                "value": 0.5
             },
             {
                 "attribute": "minecraft:generic.max_health",
@@ -73,18 +73,6 @@
                 "value": -8
             }
         ]
-    },
-    "mobile": {
-        "type": "origins:modify_velocity",
-        "axes": [
-            "x",
-            "y",
-            "z"
-        ],
-        "modifier": {
-            "operation": "multiply_base_additive",
-            "value": 0.15
-        }
     },
     "size": {
         "type": "origins:action_on_callback",
@@ -99,9 +87,8 @@
         "entity_action_removed": {
             "type": "origins:if_else",
             "condition": {
-                "type": "origins:origin",
-                "origin": "cyra:morphling/2_water",
-                "layer": "origins:origin",
+                "type": "origins:predicate",
+                "predicate": "cyra:entity/origin/morphling/any",
                 "inverted": true
             },
             "if_action": {
@@ -110,14 +97,49 @@
             }
         }
     },
+    "land_speed": {
+		"type": "origins:modify_attribute",
+		"condition": {
+			"type": "origins:or",
+			"inverted": true,
+			"conditions": [
+				{
+					"type": "origins:fluid_height",
+					"fluid": "minecraft:water",
+					"comparison": ">",
+					"compare_to": 0.0
+				},
+				{
+					"type": "origins:in_rain"
+				}
+			]
+		},
+		"attribute": "minecraft:generic.movement_speed",
+		"modifier": {
+			"operation": "multiply_base_additive",
+			"value": -0.2
+		}
+	},
     "fire_damage": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
-            "type": "origins:fire"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
         },
         "modifier": {
             "operation": "multiply_base_additive",
             "value": 2
         }
-    }
+    },
+	"forgiving_fall_damage": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fall"
+		},
+		"modifier": {
+			"operation": "add_base_early",
+			"value": -1
+		}
+	}
 }

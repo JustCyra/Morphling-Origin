@@ -1,6 +1,6 @@
 {
     "type": "origins:simple",
-
+    
     "name": "Burnout",
     "description": "Your inner fire combined with other sources of fire removes any Hunger or Poison effects currently on you!",
     "badges": [
@@ -16,6 +16,11 @@
                     }
                 ]
             }
+        },
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "When you are immune to fire damage you also become immune to Hunger and Poison Status Effects"
         }
     ]
 }

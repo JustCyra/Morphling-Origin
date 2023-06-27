@@ -19,6 +19,11 @@
         },
         {
             "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "When you are immune to fire damage you also become immune to Hunger and Poison Status Effects"
+        },
+        {
+            "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/arrow_up.png",
             "text": {
                 "text": "Changes on ",

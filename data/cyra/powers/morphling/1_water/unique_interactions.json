@@ -3,11 +3,6 @@
     "hidden": true,
     "partially_fill_cauldron": {
         "type": "apugli:action_on_block_placed",
-        "condition": {
-            "type": "origins:dimension",
-            "dimension": "minecraft:the_nether",
-            "inverted": true
-        },
         "item_condition": {
             "type": "origins:ingredient",
             "ingredient": {
@@ -21,6 +16,19 @@
                 "type": "origins:set_block",
                 "block": "minecraft:water_cauldron[level=3]"
             }
+        }
+    },
+    "craft_filled_buckets": {
+        "type": "origins:modify_crafting",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:bucket"
+            }
+        },
+        "result": {
+            "item": "minecraft:water_bucket",
+            "amount": 1
         }
     }
 }

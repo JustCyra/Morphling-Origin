@@ -1,11 +1,11 @@
 ## Size Config
-#  Change the delays to be instant
-scale delay set pehkui:visibility 0
-scale delay set pehkui:width 0
-scale delay set pehkui:height 0
-scale delay set pehkui:drops 0
-scale delay set pehkui:hitbox_height 0
-scale delay set pehkui:hitbox_width 0
+#  Reset the delays
+scale delay reset pehkui:visibility
+scale delay reset pehkui:width
+scale delay reset pehkui:height
+scale delay reset pehkui:drops
+scale delay reset pehkui:hitbox_height
+scale delay reset pehkui:hitbox_width
 
 ## Reset changes by origin
 scale reset pehkui:visibility

@@ -1,12 +1,18 @@
 {
-    "type": "origins:modify_damage_taken",
+    "type": "origins:multiple",
     "hidden": true,
-    "damage_condition": {
-        "type": "origins:fire"
-    },
-    "bientity_action": {
-        "type": "origins:target_action",
-        "action": {
+
+    "when_damaged": {
+        "type": "origins:action_when_damage_taken",
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
+        },
+        "entity_action": {
             "type": "origins:and",
             "actions": [
                 {
@@ -18,6 +24,140 @@
                     "effect": "minecraft:poison"
                 }
             ]
+        }
+    },
+    "fire_immune_automatic": {
+        "type": "origins:effect_immunity",
+        "effects": [
+            "minecraft:hunger",
+            "minecraft:poison"
+        ],
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:enchantment",
+                    "enchantment": "minecraft:fire_protection",
+                    "calculation": "sum",
+                    "comparison": ">=",
+                    "compare_to": 4
+                },
+                {
+                    "type": "origins:status_effect",
+                    "effect": "minecraft:fire_resistance"
+                }
+            ]
+        }
+    },
+    "fire_immune_automatic_overtime": {
+        "type": "origins:action_over_time",
+        "interval": 40,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:status_effect",
+                            "effect": "minecraft:hunger"
+                        },
+                        {
+                            "type": "origins:status_effect",
+                            "effect": "minecraft:poison"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:enchantment",
+                            "enchantment": "minecraft:fire_protection",
+                            "calculation": "sum",
+                            "comparison": ">=",
+                            "compare_to": 4
+                        },
+                        {
+                            "type": "origins:status_effect",
+                            "effect": "minecraft:fire_resistance"
+                        }
+                    ]
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:clear_effect",
+                    "effect": "minecraft:hunger"
+                },
+                {
+                    "type": "origins:clear_effect",
+                    "effect": "minecraft:poison"
+                }
+            ]
+        }
+    },
+    "fire_immune_automatic_when_added": {
+        "type": "origins:action_on_callback",
+        "entity_action_added": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:exists"
+                        },
+                        {
+                            "type": "origins:or",
+                            "conditions": [
+                                {
+                                    "type": "origins:enchantment",
+                                    "enchantment": "minecraft:fire_protection",
+                                    "calculation": "sum",
+                                    "comparison": ">=",
+                                    "compare_to": 4
+                                },
+                                {
+                                    "type": "origins:status_effect",
+                                    "effect": "minecraft:fire_resistance"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "origins:or",
+                            "conditions": [
+                                {
+                                    "type": "origins:status_effect",
+                                    "effect": "minecraft:hunger"
+                                },
+                                {
+                                    "type": "origins:status_effect",
+                                    "effect": "minecraft:poison"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "if_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:clear_effect",
+                            "effect": "minecraft:hunger"
+                        },
+                        {
+                            "type": "origins:clear_effect",
+                            "effect": "minecraft:poison"
+                        }
+                    ]
+                }
+            }
         }
     }
 }

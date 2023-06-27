@@ -40,8 +40,8 @@
                     "pitch": 2.0
                 },
                 {
-                    "type": "origins:execute_command",
-                    "command": "advancement grant @s only cyra:morphling/progress/6_end"
+                    "type": "origins:grant_advancement",
+                    "advancement": "cyra:morphling/progress/6_end"
                 }
             ]
         },
@@ -156,6 +156,11 @@
                             "item": "minecraft:dragon_head"
                         }
                     }
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "cyra:morphling/progress/6_end",
+                    "inverted": true
                 }
             ]
         },

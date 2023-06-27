@@ -133,5 +133,25 @@
             "operation": "multiply_base_additive",
             "value": -0.5
         }
+    },
+    "hide_close_fireballs": {
+        "type": "origins:prevent_entity_render",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:entity_type",
+                        "entity_type": "minecraft:small_fireball"
+                    }
+                },
+                {
+                    "type": "origins:distance",
+                    "comparison": "<=",
+                    "compare_to": 1.5
+                }
+            ]
+        }
     }
 }

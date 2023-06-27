@@ -46,20 +46,12 @@
                     "pitch": 2.0
                 },
                 {
-                    "type": "origins:if_else",
-                    "condition": {
-                        "type": "origins:advancement",
-                        "advancement": "minecraft:story/enchant_item",
-                        "inverted": true
-                    },
-                    "if_action": {
-                        "type": "origins:execute_command",
-                        "command": "advancement grant @s only minecraft:story/enchant_item"
-                    }
+                    "type": "origins:grant_advancement",
+                    "advancement": "minecraft:story/enchant_item"
                 },
                 {
-                    "type": "origins:execute_command",
-                    "command": "advancement grant @s only cyra:morphling/progress/2_water"
+                    "type": "origins:grant_advancement",
+                    "advancement": "cyra:morphling/progress/2_water"
                 }
             ]
         },
@@ -156,6 +148,11 @@
                     "type": "origins:xp_levels",
                     "comparison": ">=",
                     "compare_to": 15
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "cyra:morphling/progress/2_water",
+                    "inverted": true
                 }
             ]
         },

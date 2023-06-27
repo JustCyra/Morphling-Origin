@@ -1,6 +1,67 @@
 {
     "type": "origins:multiple",
     "hidden": true,
+    "walking_on_water": {
+        "type": "origins:action_over_time",
+        "interval": 7,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0.1
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "<=",
+                    "compare_to": 0.4
+                },
+                {
+                    "type": "origins:moving"
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:choice",
+            "actions": [
+                {
+                    "weight": 98,
+                    "element": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:play_sound",
+                                "sound": "minecraft:block.water.ambient",
+                                "volume": 0.5,
+                                "pitch": 1.0
+                            }
+                        ]
+                    }
+                },
+                {
+                    "weight": 1,
+                    "element": {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:ambient.underwater.exit",
+                        "volume": 0.5,
+                        "pitch": 2.0
+                    }
+                },
+                {
+                    "weight": 1,
+                    "element": {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:ambient.underwater.enter",
+                        "volume": 0.5,
+                        "pitch": 2.0
+                    }
+                }
+            ]
+        }
+    },
     "mute_hurt": {
         "type": "apugli:custom_hurt_sound",
         "muted": true
@@ -12,7 +73,8 @@
             "should_render": false
         },
         "damage_condition": {
-            "type": "origins:fire",
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire",
             "inverted": true
         },
         "entity_action": {
@@ -29,7 +91,8 @@
             "should_render": false
         },
         "damage_condition": {
-            "type": "origins:fire"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
         },
         "entity_action": {
             "type": "origins:play_sound",
@@ -51,17 +114,10 @@
             "type": "origins:delay",
             "ticks": 5,
             "action": {
-                "type": "origins:if_else",
-                "condition": {
-                    "type": "origins:predicate",
-                    "predicate": "cyra:entity/sounds/can_play/ambient"
-                },
-                "if_action": {
-                    "type": "origins:play_sound",
-                    "sound": "minecraft:ambient.underwater.exit",
-                    "volume": 1.0,
-                    "pitch": 1.0
-                }
+                "type": "origins:play_sound",
+                "sound": "minecraft:ambient.underwater.exit",
+                "volume": 1.0,
+                "pitch": 1.0
             }
         }
     },

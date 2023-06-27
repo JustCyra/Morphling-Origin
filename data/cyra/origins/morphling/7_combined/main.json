@@ -1,12 +1,12 @@
 {
-    "name": "§9Morphling",
+    "name": "Morphling",
     "description": "Made sentient from water alone, corrupted by The Nether and The End, shaped into the peek of their race to find a new purpose in life.",
     "icon": {
         "item": "minecraft:blue_dye",
         "tag": "{Enchantments: [{}]}"
     },
     "impact": 3,
-    "order": 4,
+    "order": 11,
     "powers": [
         "cyra:morphling/7_combined/combined_waterborn",
         "cyra:morphling/7_combined/experience",
@@ -16,12 +16,10 @@
         "cyra:morphling/7_combined/switch_forms",
         
         "cyra:morphling/ability_resources",
-        "cyra:morphling/3_fire/water_vulnerability",
-		"origins:damage_from_potions",
         "cyra:morphling/qol"
     ],
 
 	"author": "Cyra",
-	"discord": "Cyra#9571",
+	"discord": "just_cyra",
 	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
 }

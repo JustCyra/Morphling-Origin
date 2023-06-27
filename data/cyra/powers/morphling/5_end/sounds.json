@@ -12,7 +12,8 @@
             "should_render": false
         },
         "damage_condition": {
-            "type": "origins:fire",
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire",
             "inverted": true
         },
         "entity_action": {
@@ -40,7 +41,8 @@
             "should_render": false
         },
         "damage_condition": {
-            "type": "origins:fire"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
         },
         "entity_action": {
             "type": "origins:and",
@@ -80,28 +82,21 @@
             "type": "origins:delay",
             "ticks": 5,
             "action": {
-                "type": "origins:if_else",
-                "condition": {
-                    "type": "origins:predicate",
-                    "predicate": "cyra:entity/sounds/can_play/ambient"
-                },
-                "if_action": {
-                    "type": "origins:and",
-                    "actions": [
-                        {
-                            "type": "origins:play_sound",
-                            "sound": "minecraft:ambient.underwater.exit",
-                            "volume": 0.75,
-                            "pitch": 1
-                        },
-                        {
-                            "type": "origins:play_sound",
-                            "sound": "minecraft:entity.enderman.ambient",
-                            "volume": 0.4,
-                            "pitch": 1.25
-                        }
-                    ]
-                }
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:ambient.underwater.exit",
+                        "volume": 0.75,
+                        "pitch": 1
+                    },
+                    {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:entity.enderman.ambient",
+                        "volume": 0.4,
+                        "pitch": 1.25
+                    }
+                ]
             }
         }
     },

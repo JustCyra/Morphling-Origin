@@ -1,32 +1,49 @@
 {
     "type": "origins:multiple",
     "name": "Blazed Waterborn",
-    "description": "The Nether corrupted you. You are better at dealing with fire, but not perfect. However water is now a new problem for you...",
+    "description": "The Nether corrupted you. You are much better at dealing with fire and with some help can negate it. However water is still a problem for you...",
     "badges": [
         {
             "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
             "text": {
-                "text": "Form Stats:",
+                "text": "Fire Morphling Attributes:",
                 "extra": [
                     {
                         "text": "",
                         "color": "green",
                         "extra": [
-                            "\n+50% Water Swim Speed",
-                            "\n+50% Water Visibility",
-                            "\n+50% Lava Swim Speed",
-                            "\n+15% Movement Velocity",
+                            "\n+2 Armor",
                             "\n-80% Fire Damage Taken",
-                            "\n-30% Model Size",
-                            "\n+2 Armor"
+							{
+								"text": "\n",
+								"color": "gray",
+								"italic": true,
+                                "extra": [
+                                    {
+                                        "translate": "enchantment.minecraft.fire_protection"
+                                    },
+                                    " ",
+                                    {
+                                        "translate": "enchantment.level.4"
+                                    },
+                                    "+ grants immunity to Fire Damage"
+                                ]
+							},
+                            "\nBetter Lava Vision",
+                            "\n+50% Lava Swim Speed",
+                            "\nBetter Water Vision",
+                            "\n+50% Water Swim Speed",
+                            "\n+15% Movement Velocity",
+                            "\n-30% Model Size"
                         ]
                     },
                     {
                         "text": "",
                         "color": "red",
                         "extra": [
-                            "\n-6 Max Health"
+                            "\n-6 Max Health",
+                            "\nTake damage from water items and blocks"
                         ]
                     }
                 ]
@@ -60,7 +77,12 @@
         "update_health": true,
         "modifiers": [
             {
-                "attribute": "additionalentityattributes:water_speed",
+                "attribute": "minecraft:generic.armor",
+                "operation": "addition",
+                "value": 2
+            },
+            {
+                "attribute": "additionalentityattributes:lava_speed",
                 "operation": "multiply_base",
                 "value": 0.5
             },
@@ -70,14 +92,9 @@
                 "value": 0.5
             },
             {
-                "attribute": "additionalentityattributes:lava_speed",
+                "attribute": "additionalentityattributes:water_speed",
                 "operation": "multiply_base",
                 "value": 0.5
-            },
-            {
-                "attribute": "minecraft:generic.armor",
-                "operation": "addition",
-                "value": 2
             },
             {
                 "attribute": "minecraft:generic.max_health",
@@ -111,9 +128,8 @@
         "entity_action_removed": {
             "type": "origins:if_else",
             "condition": {
-                "type": "origins:origin",
-                "origin": "cyra:morphling/5_end",
-                "layer": "origins:origin",
+                "type": "origins:predicate",
+                "predicate": "cyra:entity/origin/morphling/any",
                 "inverted": true
             },
             "if_action": {
@@ -125,23 +141,55 @@
     "fire_damage": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
-            "type": "origins:fire"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
         },
         "modifier": {
             "operation": "multiply_base_additive",
             "value": -0.8
         }
     },
+    "fire_protection_immunity": {
+        "type": "origins:fire_immunity",
+        "condition": {
+            "type": "origins:enchantment",
+            "enchantment": "minecraft:fire_protection",
+            "calculation": "sum",
+            "comparison": ">=",
+            "compare_to": 4
+        }
+    },
     "no_magma_damage": {
         "type": "origins:invulnerability",
         "damage_condition": {
-            "type": "origins:name",
-            "name": "hotFloor"
+            "type": "origins:in_tag",
+            "tag": "cyra:morphling/immune_hot_floor"
         }
     },
     "lava_vision": {
         "type": "origins:lava_vision",
         "s": 0.0,
         "v": 30.0
+    },
+	"forgiving_fall_damage": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_falling"
+		},
+		"modifier": {
+			"operation": "add_base_early",
+			"value": -1
+		}
+	},
+    "perfect_crouch_jump_height": {
+        "type": "origins:modify_jump",
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "modifier": {
+            "operation": "set_total",
+            "value": 0.341
+        }
     }
 }

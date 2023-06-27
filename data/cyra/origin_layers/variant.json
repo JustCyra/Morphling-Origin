@@ -15,6 +15,7 @@
                 "layer": "origins:origin"
             },
             "origins": [
+                "cyra:morphling/7_combined/variant/water",
                 "cyra:morphling/7_combined/variant/fire",
                 "cyra:morphling/7_combined/variant/end"
             ]

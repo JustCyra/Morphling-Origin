@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#cyra:is_magic",
+        "minecraft:wither"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "condition": "minecraft:any_of",
+    "terms": [
+        {
+            "condition": "minecraft:reference",
+            "name": "cyra:entity/origin-variant/morphling/end"
+        },
+        {
+            "condition": "minecraft:reference",
+            "name": "cyra:entity/origin-variant/morphling/fire"
+        },
+        {
+            "condition": "minecraft:reference",
+            "name": "cyra:entity/origin-variant/morphling/water"
+        }
+    ]
+}

@@ -4,7 +4,13 @@
             "text": "Explosive Advancemements"
         },
         "description": {
-            "text": "Reach the fourth stage of Morphling by absorbing a blast from a Respawn Anchor in Overworld"
+            "text": "Reach the fourth stage of Morphling by absorbing a blast from a ",
+            "extra": [
+                {
+                    "translate": "block.minecraft.respawn_anchor"
+                },
+                " in your home world"
+            ]
         },
         "icon": {
             "item": "minecraft:red_dye"

@@ -1,18 +1,35 @@
 {
+    "type": "origins:multiple",
     "name": "Self Preservation",
     "description": "Fire doesn't hold on to you for long, you extinguish yourself if set on fire.",
-    
-    "type": "origins:modify_damage_taken",
-    "condition": {
-        "type": "origins:on_fire"
+
+    "taking_damage": {
+        "type": "origins:modify_damage_taken",
+        "condition": {
+            "type": "origins:on_fire"
+        },
+        "damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "cyra:morphling/trigger_extinguish"
+        },
+        "modifier": {
+            "operation": "set_total",
+            "value": 0
+        },
+        "bientity_action": {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:extinguish"
+            }
+        }
     },
-    "damage_condition": {
-        "type": "origins:name",
-        "name": "onFire"
-    },
-    "bientity_action": {
-        "type": "origins:target_action",
-        "action": {
+    "over_time": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "condition": {
+            "type": "origins:on_fire"
+        },
+        "entity_action": {
             "type": "origins:extinguish"
         }
     }

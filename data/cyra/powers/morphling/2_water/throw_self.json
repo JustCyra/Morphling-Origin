@@ -1,108 +1,56 @@
 {
     "type": "origins:multiple",
-    "name": "Throw Mass",
-    "description": "You can quickly shift yourself and lounge forward at will.",
-    "badges": [
-        {
-            "type": "origins:keybind",
-            "sprite": "origins:textures/gui/badge/active.png",
-            "text": "Active ability. Use with %s"
-        },
-        {
-            "type": "origins:tooltip",
-            "sprite": "origins:textures/gui/badge/star.png",
-            "text": "Cooldown: 10 seconds"
-        },
-        {
-            "type": "origins:tooltip",
-            "sprite": "origins:textures/gui/badge/arrow_up.png",
-            "text": {
-                "text": "Changes on ",
-                "extra": [
-                    {
-                        "text": "[",
-                        "color": "gray",
-                        "extra": [
-                            {
-                                "text": "Morphling III",
-                                "color": "red"
-                            },
-                            {
-                                "text": "]"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    ],
-    
+    "hidden": true,
     "active": {
         "type": "origins:active_self",
-        "cooldown": 200,
+        "cooldown": 10,
         "hud_render": {
-            "should_render": true,
-            "sprite_location": "origins:textures/gui/resource_bar.png",
-            "bar_index": 1,
-            "condition": {
-                "type": "origins:riding",
-                "inverted": true,
-                "bientity_condition": {
-                    "type": "origins:target_condition",
-                    "condition": {
-                        "type": "origins:entity_type",
-                        "entity_type": "minecraft:potion"
-                    }
-                }
-            }
+            "should_render": false
         },
         "key": {
             "key": "key.origins.primary_active",
             "continuous": true
         },
-        "entity_action": {
-            "type": "apugli:fire_projectile",
-            "entity_type": "minecraft:potion",
-            "tag": "{Tags: [\"morphling_water\"], Item:{id:\"minecraft:cyan_dye\",Count:1b,tag:{Enchantments: [{}], Potion:\"minecraft:water\"}}}",
-            "count": 1,
-            "speed": 0.75,
-            "divergence": 1.0,
-            "sound": "minecraft:ambient.underwater.enter",
-            "bientity_action": {
-                "type": "origins:and",
-                "actions": [
-                    {
-                        "type": "origins:mount"
-                    },
-                    {
-                        "type": "origins:actor_action",
-                        "action": {
-                            "type": "origins:grant_power",
-                            "power": "cyra:morphling/2_water/temp/potion_form",
-                            "source": "*:*"
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    "pause_cooldown": {
-        "type": "origins:action_over_time",
-        "interval": 10,
         "condition": {
-            "type": "origins:riding",
-            "bientity_condition": {
-                "type": "origins:target_condition",
-                "condition": {
-                    "type": "origins:entity_type",
-                    "entity_type": "minecraft:potion"
-                }
-            }
+            "type": "origins:resource",
+            "resource": "cyra:morphling/ability_resources_launch",
+            "comparison": ">=",
+            "compare_to": 20
         },
         "entity_action": {
-            "type": "origins:set_resource",
-            "resource": "*:*_active",
-            "value": 0
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:set_resource",
+                    "resource": "cyra:morphling/ability_resources_launch",
+                    "value": 0
+                },
+                {
+                    "type": "apugli:fire_projectile",
+                    "entity_type": "minecraft:potion",
+                    "tag": "{Tags: [\"morphling_water\"], Item:{id:\"minecraft:cyan_dye\",Count:1b,tag:{Enchantments: [{}], Potion:\"minecraft:water\"}}}",
+                    "count": 1,
+                    "speed": 0.75,
+                    "divergence": 1.0,
+                    "sound": "minecraft:ambient.underwater.enter",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:mount"
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:grant_power",
+                                    "power": "cyra:morphling/2_water/temp/potion_form",
+                                    "source": "*:*"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     },
     "failsave_hitbox": {
@@ -118,8 +66,55 @@
                         "inverted": true
                     },
                     "action": {
-                        "type": "origins:execute_command",
-                        "command": "execute if entity @s[pehkui.scale_type=pehkui:hitbox_width, pehkui.scale=..0.5] run function cyra:morphling/size/forms/small"
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:command",
+                            "command": "execute if entity @s[pehkui.scale_type=pehkui:hitbox_width, pehkui.scale=..0.5]",
+                            "comparison": ">",
+                            "compare_to": 0
+                        },
+                        "if_action": {
+                            "type": "origins:if_else_list",
+                            "actions": [
+                                {
+                                    "condition": {
+                                        "type": "origins:or",
+                                        "conditions": [
+                                            {
+                                                "type": "origins:origin",
+                                                "origin": "cyra:morphling/2_water",
+                                                "layer": "origins:origin"
+                                            },
+                                            {
+                                                "type": "origins:origin",
+                                                "origin": "cyra:morphling/7_combined/variant/water",
+                                                "layer": "cyra:variant"
+                                            },
+                                            {
+                                                "type": "origins:origin",
+                                                "origin": "cyra:morphling/7_combined/variant/fire",
+                                                "layer": "cyra:variant"
+                                            }
+                                        ]
+                                    },
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "function cyra:morphling/size/forms/small"
+                                    }
+                                },
+                                {
+                                    "condition": {
+                                        "type": "origins:origin",
+                                        "origin": "cyra:morphling/7_combined/variant/end",
+                                        "layer": "cyra:variant"
+                                    },
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "function cyra:morphling/size/forms/long"
+                                    }
+                                }
+                            ]
+                        }
                     }
                 },
                 {
@@ -138,8 +133,46 @@
                         "type": "origins:and",
                         "actions": [
                             {
-                                "type": "origins:execute_command",
-                                "command": "function cyra:morphling/size/forms/small"
+                                "type": "origins:if_else_list",
+                                "actions": [
+                                    {
+                                        "condition": {
+                                            "type": "origins:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:origin",
+                                                    "origin": "cyra:morphling/2_water",
+                                                    "layer": "origins:origin"
+                                                },
+                                                {
+                                                    "type": "origins:origin",
+                                                    "origin": "cyra:morphling/7_combined/variant/water",
+                                                    "layer": "cyra:variant"
+                                                },
+                                                {
+                                                    "type": "origins:origin",
+                                                    "origin": "cyra:morphling/7_combined/variant/fire",
+                                                    "layer": "cyra:variant"
+                                                }
+                                            ]
+                                        },
+                                        "action": {
+                                            "type": "origins:execute_command",
+                                            "command": "function cyra:morphling/size/forms/small"
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:origin",
+                                            "origin": "cyra:morphling/7_combined/variant/end",
+                                            "layer": "cyra:variant"
+                                        },
+                                        "action": {
+                                            "type": "origins:execute_command",
+                                            "command": "function cyra:morphling/size/forms/long"
+                                        }
+                                    }
+                                ]
                             },
                             {
                                 "type": "origins:revoke_power",

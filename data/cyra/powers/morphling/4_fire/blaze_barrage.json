@@ -44,6 +44,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "cyra:morphling/ability_resources_fireballs",
+                    "operation": "add",
                     "change": -10
                 },
                 {
@@ -85,6 +86,26 @@
                             "set": false
                         }
                     }
+                }
+            ]
+        }
+    },
+    "hide_close_fireballs": {
+        "type": "origins:prevent_entity_render",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:entity_type",
+                        "entity_type": "minecraft:small_fireball"
+                    }
+                },
+                {
+                    "type": "origins:distance",
+                    "comparison": "<=",
+                    "compare_to": 1.5
                 }
             ]
         }

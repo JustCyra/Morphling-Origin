@@ -1,0 +1,25 @@
+{
+    "name": "§bWater Form",
+    "description": "Your re-obtained Water From.\nVulnerable to Fire but good at getting around places, especially water.",
+    "icon": {
+        "item": "minecraft:cyan_dye"
+    },
+    "impact": 2,
+    "order": 0,
+    "powers": [
+        "cyra:morphling/7_combined/water/form",
+        "cyra:morphling/2_water/throw_self",
+        "cyra:morphling/1_water/water_walk",
+
+        "cyra:morphling/7_combined/water/description/throw_self",
+        "cyra:morphling/7_combined/water/description/water_walk",
+        
+        "cyra:morphling/1_water/sounds",
+        "cyra:morphling/7_combined/water/visuals",
+        "cyra:morphling/1_water/unique_interactions"
+    ],
+
+	"author": "Cyra",
+	"discord": "just_cyra",
+	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
+}

@@ -1,0 +1,17 @@
+{
+    "condition": "minecraft:any_of",
+    "terms": [
+        {
+            "condition": "minecraft:reference",
+            "name": "cyra:entity/origin/morphling/1_water"
+        },
+        {
+            "condition": "minecraft:reference",
+            "name": "cyra:entity/origin/morphling/2_water"
+        },
+        {
+            "condition": "minecraft:reference",
+            "name": "cyra:entity/origin-variant/morphling/water"
+        }
+    ]
+}

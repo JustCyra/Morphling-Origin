@@ -7,17 +7,18 @@
             "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
             "text": {
-                "text": "Form Stats:",
+                "text": "Fire Morphling Attributes:",
                 "extra": [
                     {
                         "text": "",
                         "color": "green",
                         "extra": [
-                            "\n+50% Water Swim Speed",
-                            "\n+50% Water Visibility",
-                            "\n+25% Lava Swim Speed",
-                            "\n+15% Movement Velocity",
                             "\n-40% Fire Damage Taken",
+                            "\nBetter Lava Vision",
+                            "\n+25% Lava Swim Speed",
+                            "\nBetter Water Vision",
+                            "\n+50% Water Swim Speed",
+                            "\n+15% Movement Velocity",
                             "\n-30% Model Size"
                         ]
                     },
@@ -25,7 +26,8 @@
                         "text": "",
                         "color": "red",
                         "extra": [
-                            "\n-6 Max Health"
+                            "\n-6 Max Health",
+                            "\nTake damage from water items and blocks"
                         ]
                     }
                 ]
@@ -59,9 +61,9 @@
         "update_health": true,
         "modifiers": [
             {
-                "attribute": "additionalentityattributes:water_speed",
+                "attribute": "additionalentityattributes:lava_speed",
                 "operation": "multiply_base",
-                "value": 0.5
+                "value": 0.25
             },
             {
                 "attribute": "additionalentityattributes:water_visibility",
@@ -69,9 +71,9 @@
                 "value": 0.5
             },
             {
-                "attribute": "additionalentityattributes:lava_speed",
+                "attribute": "additionalentityattributes:water_speed",
                 "operation": "multiply_base",
-                "value": 0.25
+                "value": 0.5
             },
             {
                 "attribute": "minecraft:generic.max_health",
@@ -105,9 +107,8 @@
         "entity_action_removed": {
             "type": "origins:if_else",
             "condition": {
-                "type": "origins:origin",
-                "origin": "cyra:morphling/5_combined",
-                "layer": "origins:origin",
+                "type": "origins:predicate",
+                "predicate": "cyra:entity/origin/morphling/any",
                 "inverted": true
             },
             "if_action": {
@@ -119,7 +120,8 @@
     "fire_damage": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
-            "type": "origins:fire"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
         },
         "modifier": {
             "operation": "multiply_base_additive",
@@ -130,5 +132,26 @@
 		"type": "origins:lava_vision",
 		"s": 0.0,
 		"v": 15.0
+    },
+	"forgiving_fall_damage": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fall"
+		},
+		"modifier": {
+			"operation": "add_base_early",
+			"value": -1
+		}
+	},
+    "perfect_crouch_jump_height": {
+        "type": "origins:modify_jump",
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "modifier": {
+            "operation": "set_total",
+            "value": 0.341
+        }
     }
 }

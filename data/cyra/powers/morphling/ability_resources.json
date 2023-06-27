@@ -104,6 +104,12 @@
                                 "type": "origins:origin",
                                 "origin": "cyra:morphling/5_end",
                                 "layer": "origins:origin"
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_unstable",
+                                "comparison": ">",
+                                "compare_to": 2000
                             }
                         ]
                     },
@@ -153,6 +159,81 @@
             "change": -70
         }
     },
+    "damage_unstable": {
+        "type": "origins:action_over_time",
+        "interval": 40,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_unstable",
+                        "comparison": ">",
+                        "compare_to": 3000
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:damage",
+                                "amount": 4.0,
+                                "damage_type": "cyra:morphling/unstable"
+                            },
+                            {
+                                "type": "origins:apply_effect",
+                                "effects": [
+                                    {
+                                        "effect": "minecraft:nausea",
+                                        "duration": 100,
+                                        "amplifier": 1,
+                                        "is_ambient": false,
+                                        "show_particles": false,
+                                        "show_icon": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_unstable",
+                        "comparison": ">",
+                        "compare_to": 2500
+                    },
+                    "action": {
+                        "type": "origins:damage",
+                        "amount": 2.0,
+                        "damage_type": "cyra:morphling/unstable"
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_unstable",
+                        "comparison": ">",
+                        "compare_to": 2000
+                    },
+                    "action": {
+                        "type": "origins:damage",
+                        "amount": 1.0,
+                        "damage_type": "cyra:morphling/unstable"
+                    }
+                }
+            ]
+        }
+    },
+    "shake_when_unstable": {
+        "type": "origins:shaking",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_unstable",
+            "comparison": ">",
+            "compare_to": 2000
+        }
+    },
 
     "fireballs": {
         "type": "origins:resource",
@@ -191,21 +272,21 @@
             }
         }
     },
-    "recharge": {
+    "recharge_fireballs": {
         "type": "origins:action_over_time",
-        "interval": 25,
+        "interval": 30,
         "condition": {
             "type": "origins:and",
             "conditions": [
                 {
                     "type": "origins:resource",
-                    "resource": "*:*_count",
+                    "resource": "*:*_fireballs",
                     "comparison": "<",
                     "compare_to": 70
                 },
                 {
                     "type": "origins:resource",
-                    "resource": "*:*_fire",
+                    "resource": "cyra:morphling/4_fire/blaze_barrage_fire",
                     "comparison": "==",
                     "compare_to": 0
                 }
@@ -216,6 +297,87 @@
             "resource": "*:*_fireballs",
             "operation": "add",
             "change": 10
+        }
+    },
+
+    "launch": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 20,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 1,
+            "condition": {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:origin",
+                        "origin": "cyra:morphling/7_combined/variant/water",
+                        "layer": "cyra:variant"
+                    },
+                    {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:origin",
+                                "origin": "cyra:morphling/2_water",
+                                "layer": "origins:origin"
+                            },
+                            {
+                                "type": "origins:riding",
+                                "inverted": true,
+                                "bientity_condition": {
+                                    "type": "origins:target_condition",
+                                    "condition": {
+                                        "type": "origins:entity_type",
+                                        "entity_type": "minecraft:potion"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_launch",
+                                "comparison": "<",
+                                "compare_to": 20
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "cooldown_overtime": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_launch",
+                    "comparison": "<",
+                    "compare_to": 20
+                },
+                {
+                    "type": "origins:riding",
+                    "inverted": true,
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:entity_type",
+                            "entity_type": "minecraft:potion"
+                        }
+                    }
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_launch",
+            "operation": "add",
+            "change": 1
         }
     },
 
@@ -238,6 +400,11 @@
                     "type": "origins:set_resource",
                     "resource": "*:*_fireballs",
                     "value": 70
+                },
+                {
+                    "type": "origins:set_resource",
+                    "resource": "*:*_launch",
+                    "value": 20
                 }
             ]
         }

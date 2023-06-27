@@ -40,8 +40,8 @@
                     "pitch": 2.0
                 },
                 {
-                    "type": "origins:execute_command",
-                    "command": "advancement grant @s only cyra:morphling/progress/3_fire"
+                    "type": "origins:grant_advancement",
+                    "advancement": "cyra:morphling/progress/3_fire"
                 }
             ]
         },
@@ -141,6 +141,11 @@
                 {
                     "type": "origins:dimension",
                     "dimension": "minecraft:the_nether"
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "cyra:morphling/progress/3_fire",
+                    "inverted": true
                 }
             ]
         },
@@ -165,12 +170,7 @@
                 {
                     "type": "origins:damage",
                     "amount": 2.0,
-                    "source": {
-                        "name": "inFire",
-                        "bypasses_armor": true,
-                        "unblockable": true,
-                        "fire": true
-                    }
+                    "damage_type": "cyra:morphling/eat_blaze_rod"
                 },
                 {
                     "type": "origins:if_else",

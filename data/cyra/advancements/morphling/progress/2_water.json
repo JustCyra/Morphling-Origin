@@ -4,7 +4,16 @@
             "text": "Enchanted Waterborn"
         },
         "description": {
-            "text": "Reach the second stage of Morphling by enchanting yourself"
+            "text": "Reach the second stage of Morphling by enchanting yourself with the help of ",
+            "extra": [
+                {
+                    "translate": "block.minecraft.enchanting_table"
+                },
+                " and ",
+                {
+                    "translate": "item.minecraft.lapis_lazuli"
+                }
+            ]
         },
         "icon": {
             "item": "minecraft:cyan_dye"

@@ -5,7 +5,7 @@
         "item": "minecraft:light_blue_dye"
     },
     "impact": 2,
-    "order": 4,
+    "order": 11,
     "upgrades": [
 		{
 			"condition": "cyra:morphling/progress/2_water",
@@ -19,17 +19,19 @@
         "cyra:morphling/amphibious",
         "origins:like_water",
         "cyra:morphling/1_water/water_walk",
+
+        "cyra:morphling/1_water/description/water_walk",
         
         "cyra:morphling/1_water/locked/throw_self",
 
         "cyra:morphling/1_water/evolve",
         "cyra:morphling/1_water/sounds",
         "cyra:morphling/1_water/visuals",
-        "cyra:morphling/1_water/block_interactions",
+        "cyra:morphling/1_water/unique_interactions",
         "cyra:morphling/qol"
     ],
 
 	"author": "Cyra",
-	"discord": "Cyra#9571",
+	"discord": "just_cyra",
 	"note": "If you have any issues or suggestions for the origin, be sure to contact me!"
 }

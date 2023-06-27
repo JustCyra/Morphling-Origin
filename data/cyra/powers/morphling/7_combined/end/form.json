@@ -13,17 +13,21 @@
                         "text": "",
                         "color": "green",
                         "extra": [
-                            "\n-30% Hunger Usage",
-                            "\n-30% Model Width",
+                            "\n+2 Max Health",
                             "\n+1.0 Block Reach",
-                            "\n+0.5 Attack Reach"
+                            "\n+0.5 Attack Reach",
+                            "\n-30% Model Width",
+                            "\n-30% Hunger Usage"
                         ]
                     },
                     {
                         "text": "",
                         "color": "red",
                         "extra": [
-                            "\n+200% Fire Damage Taken"
+                            "\nTake damage from water items and blocks",
+                            "\n+100% Water Damage Taken",
+                            "\n+200% Fire Damage Taken",
+                            "\n+10% Model Height"
                         ]
                     }
                 ]
@@ -35,14 +39,19 @@
         "update_health": true,
         "modifiers": [
             {
-                "attribute": "reach-entity-attributes:attack_range",
+                "attribute": "minecraft:generic.max_health",
                 "operation": "addition",
-                "value": 0.5
+                "value": 2
             },
             {
                 "attribute": "reach-entity-attributes:reach",
                 "operation": "addition",
                 "value": 1.0
+            },
+            {
+                "attribute": "reach-entity-attributes:attack_range",
+                "operation": "addition",
+                "value": 0.5
             }
         ]
     },
@@ -66,9 +75,8 @@
         "entity_action_removed": {
             "type": "origins:if_else",
             "condition": {
-                "type": "origins:origin",
-                "origin": "cyra:morphling/7_combined/variant/fire",
-                "layer": "cyra:variant",
+                "type": "origins:predicate",
+                "predicate": "cyra:entity/origin-variant/morphling/any",
                 "inverted": true
             },
             "if_action": {
@@ -77,38 +85,26 @@
             }
         }
     },
+    "water_damage": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "cyra:morphling/harmful_water"
+        },
+        "modifier": {
+            "operation": "multiply_base_additive",
+            "value": 1
+        }
+    },
     "fire_damage": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
-            "type": "origins:fire"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
         },
         "modifier": {
             "operation": "multiply_base_additive",
             "value": 2
-        }
-    },
-    "extra_particles_calm": {
-        "type": "origins:particle",
-        "particle": "minecraft:witch",
-        "frequency": 8,
-        "speed": 0,
-        "offset_y": 1.0,
-        "spread": {
-            "x": 0.15,
-            "y": 0.3,
-            "z": 0.15
-        }
-    },
-    "extra_particles_wild": {
-        "type": "origins:particle",
-        "particle": "minecraft:witch",
-        "frequency": 40,
-        "speed": 0.1,
-        "offset_y": 1.0,
-        "spread": {
-            "x": 0.15,
-            "y": 0.3,
-            "z": 0.15
         }
     }
 }

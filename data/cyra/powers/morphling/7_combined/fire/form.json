@@ -13,11 +13,36 @@
                         "text": "",
                         "color": "green",
                         "extra": [
+                            "\n+2 Max Health",
+                            "\n+2 Armor",
+                            "\n-80% Fire Damage Taken",
+							{
+								"text": "\n",
+								"color": "gray",
+								"italic": true,
+                                "extra": [
+                                    {
+                                        "translate": "enchantment.minecraft.fire_protection"
+                                    },
+                                    " ",
+                                    {
+                                        "translate": "enchantment.level.4"
+                                    },
+                                    "+ grants immunity to Fire Damage"
+                                ]
+							},
+                            "\nBetter Lava Vision",
                             "\n+50% Lava Swim Speed",
                             "\n+15% Movement Velocity",
-                            "\n-80% Fire Damage Taken",
-                            "\n-30% Model Size",
-                            "\n+2 Armor"
+                            "\n-30% Model Size"
+                        ]
+                    },
+                    {
+                        "text": "",
+                        "color": "red",
+                        "extra": [
+                            "\nTake damage from water items and blocks",
+                            "\n+100% Water Damage Taken"
                         ]
                     }
                 ]
@@ -28,6 +53,11 @@
         "type": "origins:attribute",
         "update_health": true,
         "modifiers": [
+            {
+                "attribute": "minecraft:generic.max_health",
+                "operation": "addition",
+                "value": 2
+            },
             {
                 "attribute": "minecraft:generic.armor",
                 "operation": "addition",
@@ -60,9 +90,8 @@
         "entity_action_removed": {
             "type": "origins:if_else",
             "condition": {
-                "type": "origins:origin",
-                "origin": "cyra:morphling/7_combined/variant/end",
-                "layer": "cyra:variant",
+                "type": "origins:predicate",
+                "predicate": "cyra:entity/origin-variant/morphling/any",
                 "inverted": true
             },
             "if_action": {
@@ -74,18 +103,29 @@
     "fire_damage": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
-            "type": "origins:fire"
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fire"
         },
         "modifier": {
             "operation": "multiply_base_additive",
             "value": -0.6
         }
     },
+    "fire_protection_immunity": {
+        "type": "origins:fire_immunity",
+        "condition": {
+            "type": "origins:enchantment",
+            "enchantment": "minecraft:fire_protection",
+            "calculation": "sum",
+            "comparison": ">=",
+            "compare_to": 4
+        }
+    },
     "no_magma_damage": {
         "type": "origins:invulnerability",
         "damage_condition": {
-            "type": "origins:name",
-            "name": "hotFloor"
+            "type": "origins:in_tag",
+            "tag": "cyra:morphling/immune_hot_floor"
         }
     },
     "lava_speed": {
@@ -101,15 +141,36 @@
         "s": 0.0,
         "v": 30.0
     },
-    "extra_particles": {
-        "type": "origins:particle",
-        "particle": "minecraft:crimson_spore",
-        "frequency": 8,
-        "offset_y": 0.5,
-        "spread": {
-            "x": 0.15,
-            "y": 0.2,
-            "z": 0.15
+    "water_damage": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "cyra:morphling/harmful_water"
+        },
+        "modifier": {
+            "operation": "multiply_base_additive",
+            "value": 1
+        }
+    },
+	"forgiving_fall_damage": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+            "type": "origins:in_tag",
+            "tag": "minecraft:is_fall"
+		},
+		"modifier": {
+			"operation": "add_base_early",
+			"value": -1
+		}
+	},
+    "perfect_crouch_jump_height": {
+        "type": "origins:modify_jump",
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "modifier": {
+            "operation": "set_total",
+            "value": 0.341
         }
     }
 }

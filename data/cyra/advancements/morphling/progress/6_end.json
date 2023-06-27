@@ -1,10 +1,16 @@
 {
     "display": {
         "title": {
-            "text": "The End Tourist"
+            "text": "Tourist at The End of The World"
         },
         "description": {
-            "text": "Reach the sixth stage of Morphling by absorbing the unstable powers of Chorus Fruit while wearing a Dragon Head"
+            "text": "Reach the sixth stage of Morphling by absorbing the unstable powers of the ",
+            "extra": [
+                {
+                    "translate": "item.minecraft.chorus_fruit"
+                },
+                " while exposing yourself to the ends of all worlds with a head of that world's guardian on your shoulders"
+            ]
         },
         "icon": {
             "item": "minecraft:magenta_dye"

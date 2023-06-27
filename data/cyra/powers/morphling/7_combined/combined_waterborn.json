@@ -1,28 +1,27 @@
 {
     "type": "origins:multiple",
     "name": "Combined Waterborn",
-    "description": "The End and The Nether have corrupted you. You posses the abilities of both states now.",
+    "description": "The End and The Nether have corrupted you. You posses the abilities of both states now in addition to your original form.",
     "badges": [
         {
             "type": "origins:tooltip",
             "sprite": "origins:textures/gui/badge/info.png",
             "text": {
-                "text": "You Have:",
+                "text": "Morphling Attributes:",
                 "extra": [
                     {
                         "text": "",
                         "color": "green",
                         "extra": [
-                            "\n+50% Water Swim Speed",
-                            "\n+50% Water Visibility"
+                            "\nBetter Water Vision",
+                            "\n+50% Water Swim Speed"
                         ]
                     },
                     {
                         "text": "",
                         "color": "red",
                         "extra": [
-                            "\n-6 Max Health",
-                            "\nTake damage from water items and blocks"
+                            "\n-8 Max Health"
                         ]
                     }
                 ]
@@ -34,31 +33,20 @@
         "update_health": true,
         "modifiers": [
             {
-                "attribute": "additionalentityattributes:water_speed",
+                "attribute": "additionalentityattributes:water_visibility",
                 "operation": "multiply_base",
                 "value": 0.5
             },
             {
-                "attribute": "additionalentityattributes:water_visibility",
+                "attribute": "additionalentityattributes:water_speed",
                 "operation": "multiply_base",
                 "value": 0.5
             },
             {
                 "attribute": "minecraft:generic.max_health",
                 "operation": "addition",
-                "value": -6
+                "value": -8
             }
         ]
-    },
-    "water_damage": {
-        "type": "origins:modify_damage_taken",
-        "damage_condition": {
-            "type": "origins:name",
-            "name": "hurt_by_water"
-        },
-        "modifier": {
-            "operation": "multiply_base_additive",
-            "value": 0.5
-        }
     }
 }

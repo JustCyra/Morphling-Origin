@@ -40,8 +40,8 @@
                     "pitch": 2.0
                 },
                 {
-                    "type": "origins:execute_command",
-                    "command": "advancement grant @s only cyra:morphling/progress/4_fire"
+                    "type": "origins:grant_advancement",
+                    "advancement": "cyra:morphling/progress/4_fire"
                 }
             ]
         },
@@ -152,12 +152,22 @@
     "prevent_death": {
         "type": "origins:prevent_death",
         "condition": {
-            "type": "origins:dimension",
-            "dimension": "minecraft:overworld"
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:overworld"
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "cyra:morphling/progress/4_fire",
+                    "inverted": true
+                }
+            ]
         },
         "damage_condition": {
-            "type": "origins:name",
-            "name": "badRespawnPoint"
+            "type": "origins:in_tag",
+            "tag": "cyra:morphling/explosive_evolution"
         }
     },
     "on_hit": {
@@ -178,12 +188,17 @@
                     "resource": "*:*_progress",
                     "comparison": "==",
                     "compare_to": 0
+                },
+                {
+                    "type": "origins:advancement",
+                    "advancement": "cyra:morphling/progress/4_fire",
+                    "inverted": true
                 }
             ]
         },
         "damage_condition": {
-            "type": "origins:name",
-            "name": "badRespawnPoint"
+            "type": "origins:in_tag",
+            "tag": "cyra:morphling/explosive_evolution"
         },
         "entity_action": {
             "type": "origins:and",
