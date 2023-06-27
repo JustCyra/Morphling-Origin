@@ -144,16 +144,5 @@
             "operation": "multiply_base_additive",
             "value": 2
         }
-    },
-	"forgiving_fall_damage": {
-		"type": "origins:modify_damage_taken",
-		"damage_condition": {
-            "type": "origins:in_tag",
-            "tag": "minecraft:is_fall"
-		},
-		"modifier": {
-			"operation": "add_base_early",
-			"value": -1
-		}
-	}
+    }
 }
